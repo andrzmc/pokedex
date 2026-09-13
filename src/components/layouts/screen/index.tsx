@@ -8,7 +8,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = props => {
   const {
     children,
     alignment = 'top',
-    scrollable = true,
+    scrollable = false,
     style,
     ...rest
   } = props;
