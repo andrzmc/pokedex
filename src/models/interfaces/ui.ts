@@ -28,3 +28,9 @@ export interface WrapperCardUiProps extends ViewProps {
   onPress?: TouchableOpacityProps['onPress'];
   disabled?: boolean;
 }
+
+export interface BackgroundPatternUiProps {
+  backgroundColor?: string;
+  position?: { top?: number; right?: number };
+  size?: number;
+}

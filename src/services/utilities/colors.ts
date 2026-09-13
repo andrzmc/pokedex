@@ -23,3 +23,36 @@ export const ColorUtilityService = (value: string) => {
 
   return `rgb(${newRed}, ${newGreen}, ${newBlue})`;
 };
+
+export const ColorUtilityPatternService = (color?: string): string => {
+  if (!color) return 'rgb(200, 200, 200)';
+
+  let r = 0,
+    g = 0,
+    b = 0;
+
+  if (color.startsWith('#')) {
+    let hex = color.substring(1);
+    if (hex.length === 3) {
+      hex = hex
+        .split('')
+        .map(c => c + c)
+        .join('');
+    }
+    if (hex.length === 6 || hex.length === 8) {
+      r = parseInt(hex.substring(0, 2), 16);
+      g = parseInt(hex.substring(2, 4), 16);
+      b = parseInt(hex.substring(4, 6), 16);
+    }
+  } else if (color.startsWith('rgb')) {
+    const match = color.match(/\d+/g);
+    if (match && match.length >= 3) {
+      r = parseInt(match[0], 10);
+      g = parseInt(match[1], 10);
+      b = parseInt(match[2], 10);
+    }
+  }
+
+  const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+  return luminance > 0.8 ? 'rgba(0, 0, 0, 0.15)' : 'rgba(255, 255, 255, 0.15)';
+};

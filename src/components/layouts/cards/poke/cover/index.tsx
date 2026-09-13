@@ -1,3 +1,4 @@
+import BackgroundPatternUi from '@/components/ui/background-pattern';
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
 import { DetailLayoutProps } from '@/models/interfaces/layouts';
@@ -18,7 +19,11 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
 
   return (
     <CardUi style={[{ backgroundColor: POKE_CARD_COLOR }, styles.card]}>
-      <View style={styles.backgroundCircle} />
+      <BackgroundPatternUi
+        backgroundColor={POKE_CARD_COLOR}
+        size={250}
+        position={{ top: 50 }}
+      />
 
       <View style={styles.header}>
         <TouchableOpacity

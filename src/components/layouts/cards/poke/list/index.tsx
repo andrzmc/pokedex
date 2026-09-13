@@ -1,3 +1,4 @@
+import BackgroundPatternUi from '@/components/ui/background-pattern';
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
 import { CatalogItem } from '@/models/interfaces/catalog';
@@ -19,6 +20,11 @@ const PokeListCardLayout: FC<CatalogItem> = props => {
       style={[styles.container, { backgroundColor: POKE_CARD_COLOR }]}
       onPress={() => navigate('Detail', { id: value })}
     >
+      <BackgroundPatternUi
+        backgroundColor={POKE_CARD_COLOR}
+        size={250}
+        position={{ top: 10, right: -50 }}
+      />
       <View style={styles.contentInfo}>
         <TypographyUi size="small" weight="bold" style={styles.idText}>
           {`#${String(value).padStart(3, '0')}`}
@@ -55,6 +61,16 @@ const styles = StyleSheet.create({
   },
   contentInfo: {
     flex: 1,
+  },
+  backgroundCircle: {
+    position: 'absolute',
+    width: 250,
+    height: 250,
+    borderRadius: 125,
+    backgroundColor: 'rgba(255, 255, 255, 0.15)',
+    top: 10,
+    right: -50,
+    zIndex: -1,
   },
   idText: {
     opacity: 0.4,
