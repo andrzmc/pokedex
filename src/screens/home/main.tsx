@@ -5,7 +5,7 @@ import React from 'react';
 const MainHomeScreen = () => {
   return (
     <ScreenLayout>
-      <TypographyUi size="title" color="info">
+      <TypographyUi size="title" >
         Main Home Screen
       </TypographyUi>
     </ScreenLayout>

@@ -6,3 +6,5 @@ export type TypographyColor =
   | 'success'
   | 'error'
   | 'warning';
+
+export type CardShape = 'rounded' | 'flat';
