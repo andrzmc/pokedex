@@ -1,17 +1,24 @@
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
 import { CatalogItem } from '@/models/interfaces/catalog';
+import { StackPokeParamList } from '@/models/types/navigation';
 import { ColorUtilityService } from '@/services/utilities/colors';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
 const PokeCardLayout: FC<CatalogItem> = props => {
-  const { label, color, images, tags, value } = props;
+  const { value, label, color, images, tags } = props;
 
   const POKE_CARD_COLOR = ColorUtilityService(color || '');
 
+  const { navigate } = useNavigation<NavigationProp<StackPokeParamList>>();
+
   return (
-    <CardUi style={[styles.container, { backgroundColor: POKE_CARD_COLOR }]}>
+    <CardUi
+      style={[styles.container, { backgroundColor: POKE_CARD_COLOR }]}
+      onPress={() => navigate('Detail', { id: value })}
+    >
       <View style={styles.contentInfo}>
         <TypographyUi size="small" weight="bold" style={styles.idText}>
           {`#${String(value).padStart(3, '0')}`}
