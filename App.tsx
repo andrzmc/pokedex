@@ -1,7 +1,9 @@
+import RootNavigation from '@/screens/navigation';
 import { PokeApiGraphQlService } from '@/services/graphql/pokeapi';
 import { ApolloProvider } from '@apollo/client/react';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StatusBar, Text, useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 function App() {
@@ -11,7 +13,9 @@ function App() {
     <ApolloProvider client={PokeApiGraphQlService}>
       <SafeAreaProvider>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <Text>jajaj</Text>
+        <NavigationContainer>
+          <RootNavigation />
+        </NavigationContainer>
       </SafeAreaProvider>
     </ApolloProvider>
   );
