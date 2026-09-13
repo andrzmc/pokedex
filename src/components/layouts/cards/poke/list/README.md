@@ -1,4 +1,4 @@
-# PokeCardLayout
+# PokeListCardLayout
 
 ## Description
 
@@ -7,7 +7,7 @@ A visual card component designed to display basic information about a Pokémon (
 ## Usage
 
 ```tsx
-import PokeCardLayout from '@/components/layouts/cards/poke';
+import PokeListCardLayout from '@/components/layouts/cards/poke';
 
 const pokemonItem = {
   value: 25,
@@ -20,7 +20,7 @@ const pokemonItem = {
 };
 
 // Inside your render method or functional component:
-<PokeCardLayout {...pokemonItem} />;
+<PokeListCardLayout {...pokemonItem} />;
 ```
 
 ## Props

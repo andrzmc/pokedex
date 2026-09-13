@@ -5,7 +5,7 @@ export interface CatalogItem {
   label: string;
   tags?: (number | string)[];
   color?: string;
-  images?: string[];
+  image?: string;
 }
 
 export interface CatalogResponse {

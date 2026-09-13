@@ -7,8 +7,8 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
 
-const PokeCardLayout: FC<CatalogItem> = props => {
-  const { value, label, color, images, tags } = props;
+const PokeListCardLayout: FC<CatalogItem> = props => {
+  const { value, label, color, image, tags } = props;
 
   const POKE_CARD_COLOR = ColorUtilityService(color || '');
 
@@ -36,9 +36,9 @@ const PokeCardLayout: FC<CatalogItem> = props => {
           ))}
         </View>
       </View>
-      {images?.length ? (
+      {image ? (
         <Image
-          source={{ uri: images[0] }}
+          source={{ uri: image }}
           style={styles.image}
           resizeMode="contain"
         />
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PokeCardLayout;
+export default PokeListCardLayout;

@@ -32,8 +32,32 @@ export const GET_POKE_LIST_QUERY = gql`
           name
         }
       }
-      images: pokemon_v2_pokemonsprites {
-        sprites
+    }
+  }
+`;
+
+export const GET_POKE_INFO_QUERY = gql`
+  query GetPokemonFullDetails($id: Int!) {
+    result: pokemon_v2_pokemon_by_pk(id: $id) {
+      id
+      name
+      height
+      weight
+      color: pokemon_v2_pokemonspecy {
+        pokemon_v2_pokemoncolor {
+          name
+        }
+      }
+      type: pokemon_v2_pokemontypes {
+        pokemon_v2_type {
+          name
+        }
+      }
+      abilities: pokemon_v2_pokemonabilities {
+        is_hidden
+        pokemon_v2_ability {
+          name
+        }
       }
     }
   }
