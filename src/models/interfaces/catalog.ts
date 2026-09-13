@@ -4,7 +4,7 @@ export interface CatalogItem {
   value: number | string;
   label: string;
   tags?: (number | string)[];
-  background?: string;
+  color?: string;
   images?: string[];
 }
 
@@ -19,9 +19,6 @@ export interface PaginatorTemplateProps {
   limit?: number;
   offsetInitial?: number;
   renderItem?: (item: CatalogItem) => React.ReactElement;
-  renderEmpty?: React.ReactElement | null;
-  renderLoader?: React.ReactElement | null;
   numColumns?: number;
   onItemsChange?: (items: CatalogItem[]) => void;
 }
-

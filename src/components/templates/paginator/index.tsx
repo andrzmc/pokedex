@@ -1,6 +1,7 @@
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
 import {
+  CatalogItem,
   CatalogResponse,
   PaginatorTemplateProps,
 } from '@/models/interfaces/catalog';
@@ -13,6 +14,8 @@ const PaginatorTemplate: FC<PaginatorTemplateProps> = ({
   query,
   interceptor,
   limit = 10,
+  numColumns,
+  renderItem,
 }) => {
   const [catalog, setCatalog] = useState<CatalogResponse>();
   const [errorStatus, setErrorStatus] = useState<ErrorLike>();
@@ -65,7 +68,7 @@ const PaginatorTemplate: FC<PaginatorTemplateProps> = ({
         const newData = fetchMoreResult as Record<string, any>;
 
         return {
-          ...newData.total,
+          total: prevData.total,
           items: [...prevData.items, ...newData.items],
         };
       },
@@ -86,11 +89,24 @@ const PaginatorTemplate: FC<PaginatorTemplateProps> = ({
 
       {catalog ? (
         <FlatList
+          contentContainerStyle={styles.contentContainer}
+          columnWrapperStyle={
+            numColumns && numColumns > 1 ? styles.columnWrapper : undefined
+          }
           data={catalog.items}
           keyExtractor={item => item.value as string}
-          renderItem={({ item }) => <CardUi>
-                <TypographyUi weight="bold">{item.label}</TypographyUi>
-              </CardUi>}
+          renderItem={({ item }) => (
+            <View style={styles.itemContainer}>
+              {renderItem ? (
+                renderItem(item as CatalogItem)
+              ) : (
+                <CardUi>
+                  <TypographyUi weight="bold">{item.label}</TypographyUi>
+                </CardUi>
+              )}
+            </View>
+          )}
+          numColumns={numColumns}
           onEndReachedThreshold={0.4}
           onEndReached={handleLoadMore}
           showsVerticalScrollIndicator={false}
@@ -106,8 +122,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  contentContainer: {
+    paddingHorizontal: 20,
+    gap: 10,
+  },
+  columnWrapper: {
+    gap: 10,
+  },
+  itemContainer: {
+    flex: 1,
+  },
   footer: {
-    paddingVertical: 16,
+    paddingVertical: 20,
     alignItems: 'center',
   },
 });
