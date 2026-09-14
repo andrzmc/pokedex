@@ -21,13 +21,19 @@ export const TextFontSizeStyles = StyleSheet.create({
 
 export const TextWeightStyles = StyleSheet.create({
   weight_normal: {
-    fontWeight: 'normal',
+    fontFamily: 'Roboto',
+    fontWeight: '400',
   },
   weight_medium: {
+    fontFamily: 'Roboto',
     fontWeight: '500',
   },
   weight_bold: {
-    fontWeight: 'bold',
+    fontFamily: 'Roboto',
+    fontWeight: '700',
+  },
+  weight_extrabold: {
+    fontFamily: 'Roboto',
+    fontWeight: '900',
   },
 });
-

@@ -1,4 +1,5 @@
 import { TypographyUiProps } from '@/models/interfaces/ui';
+import useSkin from '@/services/hooks/useSkin';
 import { TypographyUiStyles } from '@/styles/components/ui';
 import React, { FC } from 'react';
 import { Text } from 'react-native';
@@ -13,12 +14,14 @@ export const TypographyUi: FC<TypographyUiProps> = props => {
     ...rest
   } = props;
 
+  const { skin } = useSkin();
+
   return (
     <Text
       style={[
         TypographyUiStyles[`size_${size}`],
         TypographyUiStyles[`weight_${weight}`],
-        TypographyUiStyles[`color_${color}`],
+        { color: skin.text[color !== 'normal' ? color : 'paragraph'] },
         style,
       ]}
       {...rest}
