@@ -12,8 +12,8 @@ export const DefaultThemeStyle: SkinMode = {
     success: '#2E7D32',
     disabled: '#BDBDBD',
     text: {
-      titles: '#000000',
-      subtitles: '#757575',
+      title: '#000000',
+      subtitle: '#757575',
       paragraph: '#212121',
       inverted: '#FFFFFF',
       link: '#1A1A1A',
@@ -35,8 +35,8 @@ export const DefaultThemeStyle: SkinMode = {
     success: '#81C784',
     disabled: '#616161',
     text: {
-      titles: '#FFFFFF',
-      subtitles: '#9E9E9E',
+      title: '#FFFFFF',
+      subtitle: '#9E9E9E',
       paragraph: '#E0E0E0',
       inverted: '#000000',
       link: '#FFFFFF',

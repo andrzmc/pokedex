@@ -12,8 +12,8 @@ export const RedThemeStyle: SkinMode = {
     success: '#4CAF50',
     disabled: '#E0E0E0',
     text: {
-      titles: '#2C2C2C',
-      subtitles: '#8E8E93',
+      title: '#2C2C2C',
+      subtitle: '#8E8E93',
       paragraph: '#3A3A3C',
       inverted: '#FFFFFF',
       link: '#FF3366',
@@ -35,8 +35,8 @@ export const RedThemeStyle: SkinMode = {
     success: '#81C784',
     disabled: '#424242',
     text: {
-      titles: '#FFFFFF',
-      subtitles: '#98989D',
+      title: '#FFFFFF',
+      subtitle: '#98989D',
       paragraph: '#E5E5EA',
       inverted: '#2C2C2C',
       link: '#FF6688',

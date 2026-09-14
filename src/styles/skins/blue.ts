@@ -12,8 +12,8 @@ export const BlueThemeStyle: SkinMode = {
     success: '#10B981',
     disabled: '#E2E8F0',
     text: {
-      titles: '#0F172A',
-      subtitles: '#64748B',
+      title: '#0F172A',
+      subtitle: '#64748B',
       paragraph: '#334155',
       inverted: '#FFFFFF',
       link: '#2176FF',
@@ -35,8 +35,8 @@ export const BlueThemeStyle: SkinMode = {
     success: '#34D399',
     disabled: '#334155',
     text: {
-      titles: '#F8FAFC',
-      subtitles: '#94A3B8',
+      title: '#F8FAFC',
+      subtitle: '#94A3B8',
       paragraph: '#CBD5E1',
       inverted: '#0F172A',
       link: '#60A5FA',

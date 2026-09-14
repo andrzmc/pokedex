@@ -12,8 +12,8 @@ export const GreenThemeStyle: SkinMode = {
     success: '#CCFF00',
     disabled: '#C5CBD3',
     text: {
-      titles: '#121512',
-      subtitles: '#5B635B',
+      title: '#121512',
+      subtitle: '#5B635B',
       paragraph: '#2A2F2A',
       inverted: '#FFFFFF',
       link: '#4E97D9',
@@ -35,8 +35,8 @@ export const GreenThemeStyle: SkinMode = {
     success: '#CCFF00',
     disabled: '#4A524A',
     text: {
-      titles: '#FFFFFF',
-      subtitles: '#9CA39C',
+      title: '#FFFFFF',
+      subtitle: '#9CA39C',
       paragraph: '#E0E0E0',
       inverted: '#121512',
       link: '#64B5F6',

@@ -8,18 +8,7 @@ export interface SkinConfig {
   error: string;
   success: string;
   disabled: string;
-  text: {
-    titles: string;
-    subtitles: string;
-    paragraph: string;
-    inverted: string;
-    link: string;
-    disabled: string;
-    info: string;
-    warning: string;
-    error: string;
-    success: string;
-  };
+  text: SkinsTextConfig;
 }
 
 export interface SkinOptions {
@@ -32,4 +21,17 @@ export interface SkinOptions {
 export interface SkinMode {
   light: SkinConfig;
   dark: SkinConfig;
+}
+
+export interface SkinsTextConfig {
+  title: string;
+  subtitle: string;
+  paragraph: string;
+  inverted: string;
+  link: string;
+  disabled: string;
+  info: string;
+  warning: string;
+  error: string;
+  success: string;
 }

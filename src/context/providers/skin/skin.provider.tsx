@@ -2,7 +2,7 @@ import { SkinContext } from '@/context/providers/skin/skin.context';
 import { SkinConfig, SkinMode } from '@/models/interfaces/styles/skins';
 import { SKIN_THEMES } from '@/styles/skins';
 import React, { FC, useEffect, useState } from 'react';
-import { useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
 
 const SkinProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -37,6 +37,7 @@ const SkinProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
     <SkinContext.Provider
       value={{ theme: theme!, setTheme, skin: skin!, setSkin }}
     >
+      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {theme && skin ? children : null}
     </SkinContext.Provider>
   );
