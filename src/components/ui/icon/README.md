@@ -15,27 +15,34 @@ import IconUi from '@/components/ui/icon';
 // Autocomplete is enabled for the 'name' property.
 <IconUi name="bx-balloon" />
 
-// Using a 'filled' variant with a custom size and color
+// Interactive icon acting as a button
+<IconUi 
+  name="bxl-amazon" 
+  variant="brands" 
+  size={48} 
+  onPress={() => console.log('Amazon icon pressed!')}
+/>
+
+// Disabled interactive icon with custom styles
 <IconUi
   name="bxs-heart"
   variant="filled"
   size={32}
   color="#FF0000"
-/>
-
-// Using a 'brands' variant
-<IconUi
-  name="bxl-amazon"
-  variant="brands"
-  size={48}
+  disabled={true}
+  style={{ opacity: 0.5 }}
 />
 ```
 
 ## Props
 
-| Name        | Type                              | Required |    Default     | Description                                                                                                                                           |
-| :---------- | :-------------------------------- | :------: | :------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **name**    | `BoxiconName`                     |   Yes    |       -        | The exact name of the icon to render (e.g. `bx-balloon`, `bxs-heart`, `bxl-amazon`). Fully typed for autocomplete.                                    |
-| **variant** | `'basic' \| 'filled' \| 'brands'` |    No    |   `'basic'`    | The font family variant to use. Must correspond to the prefix used in `name` (`bx-` for basic, `bxs-` for filled, `bxl-` for brands).                 |
-| **size**    | `number`                          |    No    |      `24`      | The size of the icon in logical pixels.                                                                                                               |
-| **color**   | `string`                          |    No    | `skin.primary` | The hex or rgb color for the icon. If not provided, it falls back automatically to the `primary` color defined in the current theme skin (`useSkin`). |
+| Name         | Type                              | Required |    Default     | Description                                                                                                                                           |
+| :----------- | :-------------------------------- | :------: | :------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **name**     | `BoxiconName`                     |   Yes    |       -        | The exact name of the icon to render (e.g. `bx-balloon`, `bxs-heart`, `bxl-amazon`). Fully typed for autocomplete.                                    |
+| **variant**  | `'basic' \| 'filled' \| 'brands'` |    No    |   `'basic'`    | The font family variant to use. Must correspond to the prefix used in `name` (`bx-` for basic, `bxs-` for filled, `bxl-` for brands).                 |
+| **size**     | `number`                          |    No    |      `24`      | The size of the icon in logical pixels.                                                                                                               |
+| **color**    | `string`                          |    No    | `skin.primary` | The hex or rgb color for the icon. If not provided, it falls back automatically to the `primary` color defined in the current theme skin (`useSkin`). |
+| **onPress**  | `() => void`                      |    No    |       -        | Callback function called when the icon is pressed. Transforms the icon into a touchable element.                                                      |
+| **disabled** | `boolean`                         |    No    |    `false`     | Disables touch interactions when `onPress` is provided.                                                                                               |
+| **style**    | `StyleProp<ViewStyle>`            |    No    |       -        | Custom styles applied to the outer wrapper container.                                                                                                 |
+| **...rest**  | `ViewProps`                       |    No    |       -        | Accepts any standard React Native `<View />` properties (e.g. `testID`, `hitSlop`).                                                                   |

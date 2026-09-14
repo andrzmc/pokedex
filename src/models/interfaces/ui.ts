@@ -25,7 +25,7 @@ export interface CardUiProps extends ViewProps {
   onPress?: TouchableOpacityProps['onPress'];
 }
 
-export interface WrapperCardUiProps extends ViewProps {
+export interface WrapperUiProps extends ViewProps {
   children?: ReactNode;
   onPress?: TouchableOpacityProps['onPress'];
   disabled?: boolean;
@@ -41,9 +41,11 @@ export interface LoaderUiProps extends ViewProps {
   size?: LoaderSize;
 }
 
-export interface IconUiProps {
+export interface IconUiProps extends ViewProps {
   name: BoxiconName;
   variant?: 'basic' | 'filled' | 'brands';
   size?: number;
   color?: string;
+  disabled?: boolean;
+  onPress?: TouchableOpacityProps['onPress'];
 }

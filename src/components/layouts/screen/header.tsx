@@ -24,6 +24,7 @@ const HeaderScreenLayout: FC<ScreenLayoutHeaderProps> = props => {
 const styles = StyleSheet.create({
   container: {
     paddingVertical: 10,
+    paddingHorizontal: 20,
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',

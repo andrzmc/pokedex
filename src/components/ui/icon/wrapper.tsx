@@ -2,7 +2,7 @@ import { WrapperUiProps } from '@/models/interfaces/ui';
 import React, { FC } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
-const WrapperCardUi: FC<WrapperUiProps> = props => {
+const WrapperIconUi: FC<WrapperUiProps> = props => {
   const { children, onPress, disabled, ...rest } = props;
 
   const WRAPPER_CARD_EVENTS = disabled ? 'none' : 'auto';
@@ -28,4 +28,4 @@ const WrapperCardUi: FC<WrapperUiProps> = props => {
   );
 };
 
-export default WrapperCardUi;
+export default WrapperIconUi;

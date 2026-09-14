@@ -5,9 +5,19 @@ import iconMapFilled from '@/config/assets/icons/boxicons-filled.json';
 import iconMapBrands from '@/config/assets/icons/boxicons-brands.json';
 import useSkin from '@/services/hooks/useSkin';
 import { IconUiProps } from '@/models/interfaces/ui';
+import WrapperIconUi from './wrapper';
 
 const IconUi: FC<IconUiProps> = props => {
-  const { name, variant = 'basic', size = 24, color } = props;
+  const {
+    name,
+    variant = 'basic',
+    size = 24,
+    color,
+    onPress,
+    disabled,
+    style,
+    ...rest
+  } = props;
 
   const { skin } = useSkin();
 
@@ -24,7 +34,12 @@ const IconUi: FC<IconUiProps> = props => {
   );
 
   return (
-    <>
+    <WrapperIconUi
+      onPress={onPress}
+      disabled={disabled}
+      style={style}
+      {...rest}
+    >
       {variant === 'filled' && (
         <BoxIconFilled name={name} size={size} color={color || skin.primary} />
       )}
@@ -34,7 +49,7 @@ const IconUi: FC<IconUiProps> = props => {
       {variant === 'basic' && (
         <BoxIcon name={name} size={size} color={color || skin.primary} />
       )}
-    </>
+    </WrapperIconUi>
   );
 };
 
