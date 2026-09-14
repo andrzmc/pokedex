@@ -8,27 +8,31 @@
 
 ---
 
-## 🛠️ Stack Tecnológico y Dependencias
+## Stack Tecnológico y Dependencias
 
 Esta aplicación fue construida utilizando herramientas modernas para garantizar un rendimiento óptimo, código escalable y una excelente experiencia de usuario.
 
 ### Core
+
 - **[React Native](https://reactnative.dev/) (v0.87.1)**: Framework principal que permite desarrollar para iOS y Android utilizando un solo código base en JavaScript/TypeScript, manteniendo el rendimiento y la apariencia de una app nativa.
 - **[TypeScript](https://www.typescriptlang.org/)**: Añade tipado estático al proyecto, lo que reduce drásticamente los errores en tiempo de ejecución, mejora el autocompletado en el editor y documenta el código por sí mismo.
 
 ### Consumo de Datos (API)
+
 - **[@apollo/client](https://www.apollographql.com/docs/react/) y [graphql](https://graphql.org/)**: Utilizados en conjunto para conectarse a la API de Pokémon. Apollo Client gestiona de forma inteligente el caché de las consultas (queries), los estados de carga (loading) y los errores, haciendo que la recuperación de datos sea increíblemente rápida y eficiente.
 
 ### Navegación
+
 - **[React Navigation](https://reactnavigation.org/) (`@react-navigation/native`, `native-stack`)**: El estándar de la industria para el enrutamiento en React Native. Proporciona transiciones nativas suaves entre pantallas (como la lista de Pokémon y la vista de detalles) y maneja el historial de navegación.
 - **`react-native-safe-area-context` y `react-native-screens`**: Dependencias clave de React Navigation que garantizan que la interfaz no se superponga con los bordes de los dispositivos modernos (como el notch o la isla dinámica del iPhone) y optimizan el uso de memoria de las pantallas.
 
 ### Utilidades y Reactividad
+
 - **[RxJS](https://rxjs.dev/)**: Librería de programación reactiva. Se utiliza para manejar flujos de datos asíncronos complejos o eventos de interfaz de usuario de manera declarativa y potente.
 
 ---
 
-## ⚙️ Requisitos del Sistema
+## Requisitos del Sistema
 
 | Herramienta            | Plataforma      | Descarga                                                    |
 | ---------------------- | --------------- | ----------------------------------------------------------- |
@@ -39,7 +43,7 @@ Esta aplicación fue construida utilizando herramientas modernas para garantizar
 
 ---
 
-## 🚀 Instalación y Configuración
+## Instalación y Configuración
 
 ### 1. Versión de Node.js
 
@@ -72,20 +76,22 @@ cd ios && pod install && cd ..
 
 ---
 
-## 🎮 Ejecución del Proyecto
+## Ejecución del Proyecto
 
 Para levantar el servidor de desarrollo (Metro Bundler) y ejecutar el proyecto en tu emulador o dispositivo físico:
 
 1. **Inicia el servidor Metro:**
+
    ```bash
    yarn start
    ```
 
 2. **Ejecuta la app (en otra pestaña de la terminal):**
+
    ```bash
    # Para emulador / dispositivo iOS
    yarn ios
-   
+
    # Para emulador / dispositivo Android
    yarn android
    ```
