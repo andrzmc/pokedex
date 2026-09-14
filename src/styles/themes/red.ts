@@ -17,41 +17,6 @@ export const RedThemeStyle = {
       link: '#FF3366',
       disabled: '#C5CBD3',
     },
-    input: {
-      text: '#2C2C2C',
-      placeholder: '#8E8E93',
-      disabled: '#E0E0E0',
-    },
-    navigation: {
-      background: '#FFFFFF',
-      border: '#F4F5F9',
-      item: '#8E8E93',
-      itemActive: '#FF3366',
-    },
-    pills: {
-      active: {
-        color: '#FFFFFF',
-        background: '#FF3366',
-        border: '#FF3366',
-      },
-      inactive: {
-        color: '#8E8E93',
-        background: '#FFFFFF',
-        border: '#F4F5F9',
-      },
-    },
-    buttons: {
-      primary: {
-        color: '#FFFFFF',
-        background: '#FF3366',
-        border: '#FF3366',
-      },
-      secondary: {
-        color: '#2C2C2C',
-        background: '#F4F5F9',
-        border: '#F4F5F9',
-      },
-    },
   },
   dark: {
     primary: '#FF3366',
@@ -70,41 +35,6 @@ export const RedThemeStyle = {
       inverted: '#2C2C2C',
       link: '#FF6688',
       disabled: '#757575',
-    },
-    input: {
-      text: '#FFFFFF',
-      placeholder: '#98989D',
-      disabled: '#424242',
-    },
-    navigation: {
-      background: '#1C1C1E',
-      border: '#2C2C2E',
-      item: '#98989D',
-      itemActive: '#FF3366',
-    },
-    pills: {
-      active: {
-        color: '#FFFFFF',
-        background: '#FF3366',
-        border: '#FF3366',
-      },
-      inactive: {
-        color: '#FFFFFF',
-        background: '#2C2C2E',
-        border: '#2C2C2E',
-      },
-    },
-    buttons: {
-      primary: {
-        color: '#FFFFFF',
-        background: '#FF3366',
-        border: '#FF3366',
-      },
-      secondary: {
-        color: '#FFFFFF',
-        background: '#2C2C2E',
-        border: '#2C2C2E',
-      },
     },
   },
 };
