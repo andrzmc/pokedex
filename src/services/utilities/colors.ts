@@ -24,7 +24,10 @@ export const ColorUtilityService = (value: string) => {
   return `rgb(${newRed}, ${newGreen}, ${newBlue})`;
 };
 
-export const ColorUtilityPatternService = (color?: string): string => {
+export const ColorUtilityPatternService = (
+  color?: string,
+  opacity?: number,
+): string => {
   if (!color) return 'rgb(200, 200, 200)';
 
   let r = 0,
@@ -54,5 +57,7 @@ export const ColorUtilityPatternService = (color?: string): string => {
   }
 
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance > 0.8 ? 'rgba(0, 0, 0, 0.15)' : 'rgba(255, 255, 255, 0.15)';
+  return luminance > 0.8
+    ? `rgba(0, 0, 0, ${opacity || 1.0})`
+    : `rgba(255, 255, 255, ${opacity || 1.0})`;
 };

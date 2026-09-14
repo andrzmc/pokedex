@@ -3,7 +3,10 @@ import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
 import { CatalogItem } from '@/models/interfaces/catalog';
 import { StackPokeParamList } from '@/models/types/navigation';
-import { ColorUtilityService } from '@/services/utilities/colors';
+import {
+  ColorUtilityPatternService,
+  ColorUtilityService,
+} from '@/services/utilities/colors';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import React, { FC } from 'react';
 import { Image, StyleSheet, View } from 'react-native';
@@ -26,16 +29,43 @@ const PokeListCardLayout: FC<CatalogItem> = props => {
         position={{ top: 10, right: -50 }}
       />
       <View style={styles.contentInfo}>
-        <TypographyUi size="small" weight="bold" style={styles.idText}>
+        <TypographyUi
+          size="small"
+          weight="bold"
+          style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+        >
           {`#${String(value).padStart(3, '0')}`}
         </TypographyUi>
-        <TypographyUi weight="bold" size="subtitle" style={styles.nameText}>
+        <TypographyUi
+          weight="bold"
+          size="subtitle"
+          style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+        >
           {label.charAt(0).toUpperCase() + label.slice(1)}
         </TypographyUi>
         <View style={styles.tagsContainer}>
           {tags?.map((tag, index) => (
-            <View key={index} style={styles.tagBadge}>
-              <TypographyUi size="small" style={styles.tagText} weight="medium">
+            <View
+              key={index}
+              style={[
+                styles.tagBadge,
+                {
+                  backgroundColor: ColorUtilityPatternService(
+                    POKE_CARD_COLOR,
+                    0.15,
+                  ),
+                },
+              ]}
+            >
+              <TypographyUi
+                size="small"
+                style={{
+                  color: ColorUtilityPatternService(
+                    ColorUtilityPatternService(POKE_CARD_COLOR),
+                  ),
+                }}
+                weight="medium"
+              >
                 {String(tag).charAt(0).toUpperCase() + String(tag).slice(1)}
               </TypographyUi>
             </View>
@@ -85,7 +115,6 @@ const styles = StyleSheet.create({
     marginTop: 'auto',
   },
   tagBadge: {
-    backgroundColor: 'rgba(0,0,0, 0.3)',
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 15,

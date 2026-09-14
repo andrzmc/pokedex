@@ -14,7 +14,7 @@ const BackgroundPatternUi: FC<BackgroundPatternUiProps> = props => {
       style={[
         styles.container,
         {
-          backgroundColor: ColorUtilityPatternService(backgroundColor),
+          backgroundColor: ColorUtilityPatternService(backgroundColor, 0.15),
           width: size,
           height: size,
           borderRadius: size / 2,

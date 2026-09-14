@@ -2,7 +2,10 @@ import BackgroundPatternUi from '@/components/ui/background-pattern';
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
 import { DetailLayoutProps } from '@/models/interfaces/layouts';
-import { ColorUtilityService } from '@/services/utilities/colors';
+import {
+  ColorUtilityPatternService,
+  ColorUtilityService,
+} from '@/services/utilities/colors';
 import { useNavigation } from '@react-navigation/native';
 import React, { FC, useState } from 'react';
 import { Image, View, StyleSheet, TouchableOpacity } from 'react-native';
@@ -30,11 +33,19 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
           onPress={() => navigation.goBack()}
           activeOpacity={0.8}
         >
-          <TypographyUi size="subtitle" weight="bold" style={styles.idText}>
+          <TypographyUi
+            size="subtitle"
+            weight="bold"
+            style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+          >
             {'<-'}
           </TypographyUi>
         </TouchableOpacity>
-        <TypographyUi size="subtitle" weight="bold" style={styles.idText}>
+        <TypographyUi
+          size="subtitle"
+          weight="bold"
+          style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+        >
           {`#${String(id).padStart(3, '0')}`}
         </TypographyUi>
       </View>
@@ -54,17 +65,36 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
       </TouchableOpacity>
 
       <View style={styles.footer}>
-        <TypographyUi weight="bold" size="title" style={styles.nameText}>
+        <TypographyUi
+          weight="bold"
+          size="title"
+          style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+        >
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </TypographyUi>
 
         <View style={styles.typesContainer}>
           {types?.map((tag, index) => (
-            <View key={index} style={styles.typePill}>
+            <View
+              key={index}
+              style={[
+                styles.typePill,
+                {
+                  backgroundColor: ColorUtilityPatternService(
+                    POKE_CARD_COLOR,
+                    0.15,
+                  ),
+                },
+              ]}
+            >
               <TypographyUi
                 size="small"
                 weight="medium"
-                style={styles.typeText}
+                style={{
+                  color: ColorUtilityPatternService(
+                    ColorUtilityPatternService(POKE_CARD_COLOR),
+                  ),
+                }}
               >
                 {String(tag).charAt(0).toUpperCase() + String(tag).slice(1)}
               </TypographyUi>
@@ -100,9 +130,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     zIndex: 2,
   },
-  idText: {
-    color: 'rgba(255, 255, 255, 0.8)',
-  },
   imageContainer: {
     alignItems: 'center',
     justifyContent: 'center',
@@ -118,23 +145,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     zIndex: 2,
   },
-  nameText: {
-    color: '#ffffff',
-    fontSize: 36,
-    marginBottom: 12,
-  },
   typesContainer: {
     flexDirection: 'row',
     gap: 8,
   },
   typePill: {
-    backgroundColor: 'rgba(255, 255, 255, 0.25)',
     paddingHorizontal: 16,
     paddingVertical: 6,
     borderRadius: 16,
-  },
-  typeText: {
-    color: '#ffffff',
   },
 });
 
