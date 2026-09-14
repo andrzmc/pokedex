@@ -1,6 +1,12 @@
 import { ReactNode } from 'react';
 import { ViewProps } from 'react-native';
 import { ScreenLayoutAlignment } from '../types/layouts';
+import { TypographySize } from '../types/ui';
+
+export interface ErrorStatusCardLayoutProps {
+  message: string;
+  size?: TypographySize;
+}
 
 export interface ScreenLayoutProps extends ViewProps {
   children: ReactNode;

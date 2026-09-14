@@ -1,6 +1,8 @@
 import PokeCoverCardLayout from '@/components/layouts/cards/poke/cover';
 import PokeInfoCardLayout from '@/components/layouts/cards/poke/info';
+import ErrorStatusCardLayout from '@/components/layouts/cards/status/error';
 import ScreenLayout from '@/components/layouts/screen';
+import LoaderUi from '@/components/ui/loader';
 import { DetailLayoutProps } from '@/models/interfaces/layouts';
 import { GET_POKE_INFO_QUERY } from '@/services/graphql/pokeapi';
 import { PokeInfoMapperService } from '@/services/utilities/pokeapi';
@@ -48,12 +50,27 @@ const DetailHomeScreen = () => {
 
   return (
     <ScreenLayout>
-      {info ? (
+      {loading ? (
+        <LoaderUi size="big" />
+      ) : (
         <>
-          <PokeCoverCardLayout {...info} />
-          <PokeInfoCardLayout {...info} />
+          {errorStatus?.message ? (
+            <ErrorStatusCardLayout
+              message={errorStatus?.message}
+              size="title"
+            />
+          ) : (
+            <>
+              {info ? (
+                <>
+                  <PokeCoverCardLayout {...info} />
+                  <PokeInfoCardLayout {...info} />
+                </>
+              ) : null}
+            </>
+          )}
         </>
-      ) : null}
+      )}
     </ScreenLayout>
   );
 };
