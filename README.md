@@ -1,97 +1,91 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 📱 Pokedex App
 
-# Getting Started
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Apollo GraphQL](https://img.shields.io/badge/Apollo%20GraphQL-311C87?&style=for-the-badge&logo=Apollo%20GraphQL&logoColor=white)
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+**Pokedex** es una aplicación móvil desarrollada por un fanático de Pokémon que busca demostrar una interfaz bonita, fluida y de alta calidad, reflejando al mismo tiempo buenas prácticas de desarrollo, arquitectura y diseño de componentes.
 
-## Step 1: Start Metro
+---
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 🛠️ Stack Tecnológico y Dependencias
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+Esta aplicación fue construida utilizando herramientas modernas para garantizar un rendimiento óptimo, código escalable y una excelente experiencia de usuario.
 
-```sh
-# Using npm
-npm start
+### Core
+- **[React Native](https://reactnative.dev/) (v0.87.1)**: Framework principal que permite desarrollar para iOS y Android utilizando un solo código base en JavaScript/TypeScript, manteniendo el rendimiento y la apariencia de una app nativa.
+- **[TypeScript](https://www.typescriptlang.org/)**: Añade tipado estático al proyecto, lo que reduce drásticamente los errores en tiempo de ejecución, mejora el autocompletado en el editor y documenta el código por sí mismo.
 
-# OR using Yarn
-yarn start
+### Consumo de Datos (API)
+- **[@apollo/client](https://www.apollographql.com/docs/react/) y [graphql](https://graphql.org/)**: Utilizados en conjunto para conectarse a la API de Pokémon. Apollo Client gestiona de forma inteligente el caché de las consultas (queries), los estados de carga (loading) y los errores, haciendo que la recuperación de datos sea increíblemente rápida y eficiente.
+
+### Navegación
+- **[React Navigation](https://reactnavigation.org/) (`@react-navigation/native`, `native-stack`)**: El estándar de la industria para el enrutamiento en React Native. Proporciona transiciones nativas suaves entre pantallas (como la lista de Pokémon y la vista de detalles) y maneja el historial de navegación.
+- **`react-native-safe-area-context` y `react-native-screens`**: Dependencias clave de React Navigation que garantizan que la interfaz no se superponga con los bordes de los dispositivos modernos (como el notch o la isla dinámica del iPhone) y optimizan el uso de memoria de las pantallas.
+
+### Utilidades y Reactividad
+- **[RxJS](https://rxjs.dev/)**: Librería de programación reactiva. Se utiliza para manejar flujos de datos asíncronos complejos o eventos de interfaz de usuario de manera declarativa y potente.
+
+---
+
+## ⚙️ Requisitos del Sistema
+
+| Herramienta            | Plataforma      | Descarga                                                    |
+| ---------------------- | --------------- | ----------------------------------------------------------- |
+| **Visual Studio Code** | Windows + macOS | [Descargar](https://code.visualstudio.com/)                 |
+| **Android Studio**     | Windows + macOS | [Descargar](https://developer.android.com/studio?hl=es-419) |
+| **Xcode**              | macOS solamente | [Descargar](https://developer.apple.com/xcode/)             |
+| **Node.js**            | v24.19.x        | A través de NVM (ver abajo)                                 |
+
+---
+
+## 🚀 Instalación y Configuración
+
+### 1. Versión de Node.js
+
+En la raíz del proyecto existe un archivo `.nvmrc` que especifica la versión de Node (`24.19`). Si usas [NVM](https://github.com/nvm-sh/nvm):
+
+```bash
+# Usar la versión especificada en .nvmrc
+nvm use
+
+# Si no la tienes instalada:
+nvm install 24.19
+nvm use 24.19
 ```
 
-## Step 2: Build and run your app
+### 2. Instalar dependencias del proyecto
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+La aplicación utiliza `yarn` como gestor de paquetes principal (especificado a la versión 3.6.4).
 
-### Android
-
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+yarn install
 ```
 
-### iOS
+### 3. Instalar Pods de iOS (Solo macOS)
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+Para vincular las dependencias nativas en iOS:
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+cd ios && pod install && cd ..
 ```
 
-Then, and every time you update your native dependencies, run:
+---
 
-```sh
-bundle exec pod install
-```
+## 🎮 Ejecución del Proyecto
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Para levantar el servidor de desarrollo (Metro Bundler) y ejecutar el proyecto en tu emulador o dispositivo físico:
 
-```sh
-# Using npm
-npm run ios
+1. **Inicia el servidor Metro:**
+   ```bash
+   yarn start
+   ```
 
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+2. **Ejecuta la app (en otra pestaña de la terminal):**
+   ```bash
+   # Para emulador / dispositivo iOS
+   yarn ios
+   
+   # Para emulador / dispositivo Android
+   yarn android
+   ```
