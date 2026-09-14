@@ -15,6 +15,7 @@ const PokeListCardLayout: FC<CatalogItem> = props => {
   const { value, label, color, image, tags } = props;
 
   const POKE_CARD_COLOR = ColorUtilityService(color || '');
+  const POKE_FONT_COLOR = ColorUtilityPatternService(POKE_CARD_COLOR);
 
   const { navigate } = useNavigation<NavigationProp<StackPokeParamList>>();
 
@@ -32,14 +33,14 @@ const PokeListCardLayout: FC<CatalogItem> = props => {
         <TypographyUi
           size="small"
           weight="bold"
-          style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+          style={{ color: POKE_FONT_COLOR }}
         >
           {`#${String(value).padStart(3, '0')}`}
         </TypographyUi>
         <TypographyUi
           weight="bold"
           size="subtitle"
-          style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+          style={{ color: POKE_FONT_COLOR }}
         >
           {label.charAt(0).toUpperCase() + label.slice(1)}
         </TypographyUi>
@@ -60,9 +61,7 @@ const PokeListCardLayout: FC<CatalogItem> = props => {
               <TypographyUi
                 size="small"
                 style={{
-                  color: ColorUtilityPatternService(
-                    ColorUtilityPatternService(POKE_CARD_COLOR),
-                  ),
+                  color: ColorUtilityPatternService(POKE_FONT_COLOR),
                 }}
                 weight="medium"
               >

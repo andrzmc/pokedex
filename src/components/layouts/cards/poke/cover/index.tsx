@@ -16,6 +16,7 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
   const navigation = useNavigation();
 
   const POKE_CARD_COLOR = ColorUtilityService(color || '');
+  const POKE_FONT_COLOR = ColorUtilityPatternService(POKE_CARD_COLOR);
 
   const displayImage =
     isShiny && images?.shiny ? images.shiny : images?.default;
@@ -36,7 +37,7 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
           <TypographyUi
             size="subtitle"
             weight="bold"
-            style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+            style={{ color: POKE_FONT_COLOR }}
           >
             {'<-'}
           </TypographyUi>
@@ -44,7 +45,7 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
         <TypographyUi
           size="subtitle"
           weight="bold"
-          style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+          style={{ color: POKE_FONT_COLOR }}
         >
           {`#${String(id).padStart(3, '0')}`}
         </TypographyUi>
@@ -68,7 +69,7 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
         <TypographyUi
           weight="bold"
           size="title"
-          style={{ color: ColorUtilityPatternService(POKE_CARD_COLOR) }}
+          style={{ color: POKE_FONT_COLOR }}
         >
           {name.charAt(0).toUpperCase() + name.slice(1)}
         </TypographyUi>
@@ -91,9 +92,7 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
                 size="small"
                 weight="medium"
                 style={{
-                  color: ColorUtilityPatternService(
-                    ColorUtilityPatternService(POKE_CARD_COLOR),
-                  ),
+                  color: ColorUtilityPatternService(POKE_FONT_COLOR),
                 }}
               >
                 {String(tag).charAt(0).toUpperCase() + String(tag).slice(1)}

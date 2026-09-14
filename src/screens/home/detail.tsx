@@ -1,4 +1,5 @@
 import PokeCoverCardLayout from '@/components/layouts/cards/poke/cover';
+import PokeInfoCardLayout from '@/components/layouts/cards/poke/info';
 import ScreenLayout from '@/components/layouts/screen';
 import { DetailLayoutProps } from '@/models/interfaces/layouts';
 import { GET_POKE_INFO_QUERY } from '@/services/graphql/pokeapi';
@@ -46,7 +47,14 @@ const DetailHomeScreen = () => {
   };
 
   return (
-    <ScreenLayout>{info && <PokeCoverCardLayout {...info} />}</ScreenLayout>
+    <ScreenLayout>
+      {info ? (
+        <>
+          <PokeCoverCardLayout {...info} />
+          <PokeInfoCardLayout {...info} />
+        </>
+      ) : null}
+    </ScreenLayout>
   );
 };
 
