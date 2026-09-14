@@ -11,6 +11,7 @@ const RootNavigation = () => {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
+        gestureEnabled: true,
       }}
     >
       <Stack.Screen name="Home" component={MainHomeScreen} />

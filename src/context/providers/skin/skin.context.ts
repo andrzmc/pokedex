@@ -6,11 +6,13 @@ export const SkinContext = createContext<{
   setTheme: (theme: SkinMode) => void;
   skin: SkinConfig;
   setSkin: (skin: SkinConfig) => void;
+  isDarkMode: boolean;
 }>(
   {} as {
     theme: SkinMode;
     setTheme: (theme: SkinMode) => void;
     skin: SkinConfig;
     setSkin: (skin: SkinConfig) => void;
+    isDarkMode: boolean;
   },
 );

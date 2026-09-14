@@ -1,10 +1,10 @@
 import { SkinContext } from '@/context/providers/skin/skin.context';
 import { SkinConfig, SkinMode } from '@/models/interfaces/styles/skins';
 import { SKIN_THEMES } from '@/styles/skins';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, ReactNode, useEffect, useState } from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 
-const SkinProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
+const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const AVAILABLE_SKINS = SKIN_THEMES;
@@ -20,7 +20,7 @@ const SkinProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
     handleSkinByTheme();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [theme]);
+  }, [theme, isDarkMode]);
 
   const init = () => {
     if (theme) return;
@@ -35,7 +35,13 @@ const SkinProvider: FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <SkinContext.Provider
-      value={{ theme: theme!, setTheme, skin: skin!, setSkin }}
+      value={{
+        theme: theme!,
+        setTheme,
+        skin: skin!,
+        setSkin,
+        isDarkMode: isDarkMode!,
+      }}
     >
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
       {theme && skin ? children : null}

@@ -1,8 +1,7 @@
-import ThemeProvider from '@/context/providers/skin/skin.provider';
-import RootNavigation from '@/screens/navigation';
+import NavigatorTemplate from '@/components/templates/navigator';
+import SkinProvider from '@/context/providers/skin/skin.provider';
 import { PokeApiGraphQlService } from '@/services/graphql/pokeapi';
 import { ApolloProvider } from '@apollo/client/react';
-import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -10,11 +9,9 @@ function App() {
   return (
     <ApolloProvider client={PokeApiGraphQlService}>
       <SafeAreaProvider>
-        <ThemeProvider>
-          <NavigationContainer>
-            <RootNavigation />
-          </NavigationContainer>
-        </ThemeProvider>
+        <SkinProvider>
+          <NavigatorTemplate />
+        </SkinProvider>
       </SafeAreaProvider>
     </ApolloProvider>
   );
