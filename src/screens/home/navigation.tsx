@@ -18,7 +18,7 @@ const RootNavigation = () => {
     >
       <Stack.Screen name="Home" component={MainHomeScreen} />
       <Stack.Screen name="Detail" component={DetailHomeScreen} />
-      <Stack.Screen name="Profile" component={SettingsNavigation} />
+      <Stack.Screen name="Settings" component={SettingsNavigation} />
     </Stack.Navigator>
   );
 };
