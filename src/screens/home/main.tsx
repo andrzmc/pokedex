@@ -1,13 +1,19 @@
 import PokeListCardLayout from '@/components/layouts/cards/poke/list';
 import ScreenLayout from '@/components/layouts/screen';
 import PaginatorTemplate from '@/components/templates/paginator';
+import IconUi from '@/components/ui/icon';
 import { GET_POKE_LIST_QUERY } from '@/services/graphql/pokeapi';
 import { PokeListMapperService } from '@/services/utilities/pokeapi';
 import React from 'react';
 
 const MainHomeScreen = () => {
   return (
-    <ScreenLayout header={{ title: 'Pokédex' }}>
+    <ScreenLayout
+      header={{
+        title: 'Pokédex',
+        childrenLeft: <IconUi name="bx-amazon" variant="brands" size={48} />,
+      }}
+    >
       <PaginatorTemplate
         query={GET_POKE_LIST_QUERY}
         interceptor={PokeListMapperService}

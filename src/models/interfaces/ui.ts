@@ -6,6 +6,7 @@ import {
   TypographyWeight,
   CardShape,
   LoaderSize,
+  BoxiconName,
 } from '../types/ui';
 
 export interface TypographyUiProps extends TextProps {
@@ -38,4 +39,11 @@ export interface BackgroundPatternUiProps {
 
 export interface LoaderUiProps extends ViewProps {
   size?: LoaderSize;
+}
+
+export interface IconUiProps {
+  name: BoxiconName;
+  variant?: 'basic' | 'filled' | 'brands';
+  size?: number;
+  color?: string;
 }

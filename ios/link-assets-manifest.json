@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "node_modules/@boxicons/core/fonts/basic/boxicons.ttf",
+      "sha1": "ace0cd552ce8b5bb4370e90a3f994093d21c1e2c"
+    },
+    {
+      "path": "node_modules/@boxicons/core/fonts/brands/boxicons-brands.ttf",
+      "sha1": "54cdbe8e65f5ebe163aa4fe1c0c4a24687be8fc2"
+    },
+    {
+      "path": "node_modules/@boxicons/core/fonts/filled/boxicons-filled.ttf",
+      "sha1": "411765a1dcbc80f1e470d394f0b9e474599986e7"
+    }
+  ]
+}
