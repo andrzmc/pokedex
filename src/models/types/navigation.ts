@@ -3,9 +3,9 @@ import { NavigatorScreenParams } from '@react-navigation/native';
 export type RootStackParamList = {
   Home: undefined;
   Detail: { id: string | number };
-  Profile: NavigatorScreenParams<ProfileStackParamList>;
+  Settings: NavigatorScreenParams<SettingsStackParamList>;
 };
 
-export type ProfileStackParamList = {
+export type SettingsStackParamList = {
   Home: undefined;
 };

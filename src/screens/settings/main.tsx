@@ -4,19 +4,22 @@ import { TypographyUi } from '@/components/ui/typography';
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 
-const MainProfileScreen = () => {
+const MainSettingsScreen = () => {
   const { goBack } = useNavigation();
 
   return (
     <ScreenLayout
       header={{
-        title: 'Mi Perfil',
-        childrenLeft: <IconUi name="bx-chevron-left" onPress={goBack} />,
+        title: 'Settings',
+        childrenLeft: (
+          <IconUi name="bx-arrow-left-stroke" size={32} onPress={goBack} />
+        ),
       }}
+      scrollable
     >
-      <TypographyUi>Perfil</TypographyUi>
+      <TypographyUi>Settings</TypographyUi>
     </ScreenLayout>
   );
 };
 
-export default MainProfileScreen;
+export default MainSettingsScreen;

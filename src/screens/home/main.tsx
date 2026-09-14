@@ -17,8 +17,9 @@ const MainHomeScreen = () => {
         title: 'Pokédex',
         childrenLeft: (
           <IconUi
-            name="bx-menu"
-            onPress={() => navigate('Profile', { screen: 'Home' })}
+            name="bx-menu-left"
+            size={32}
+            onPress={() => navigate('Settings', { screen: 'Home' })}
           />
         ),
       }}

@@ -1,5 +1,6 @@
 import BackgroundPatternUi from '@/components/ui/background-pattern';
 import { CardUi } from '@/components/ui/card';
+import IconUi from '@/components/ui/icon';
 import { TypographyUi } from '@/components/ui/typography';
 import { DetailLayoutProps } from '@/models/interfaces/layouts';
 import {
@@ -31,13 +32,11 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
 
       <View style={styles.header}>
         <TouchableOpacity onPress={() => goBack()} activeOpacity={0.8}>
-          <TypographyUi
-            size="subtitle"
-            weight="bold"
-            style={{ color: POKE_FONT_COLOR }}
-          >
-            {'<-'}
-          </TypographyUi>
+          <IconUi
+            name="bx-arrow-left-stroke"
+            size={32}
+            color={POKE_FONT_COLOR}
+          />
         </TouchableOpacity>
         <TypographyUi
           size="subtitle"

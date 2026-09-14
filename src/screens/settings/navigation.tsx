@@ -1,8 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
-import MainProfileScreen from './main';
+import MainSettingsScreen from './main';
 
-const ProfileNavigation = () => {
+const SettingsNavigation = () => {
   const Stack = createNativeStackNavigator();
 
   return (
@@ -14,9 +14,9 @@ const ProfileNavigation = () => {
         fullScreenGestureEnabled: true,
       }}
     >
-      <Stack.Screen name="Home" component={MainProfileScreen} />
+      <Stack.Screen name="Home" component={MainSettingsScreen} />
     </Stack.Navigator>
   );
 };
 
-export default ProfileNavigation;
+export default SettingsNavigation;
