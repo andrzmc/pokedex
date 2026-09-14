@@ -13,7 +13,7 @@ import { Image, View, StyleSheet, TouchableOpacity } from 'react-native';
 const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
   const { id, color, images, name, types } = props;
   const [isShiny, setIsShiny] = useState(false);
-  const navigation = useNavigation();
+  const { goBack } = useNavigation();
 
   const POKE_CARD_COLOR = ColorUtilityService(color || '');
   const POKE_FONT_COLOR = ColorUtilityPatternService(POKE_CARD_COLOR);
@@ -30,10 +30,7 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
       />
 
       <View style={styles.header}>
-        <TouchableOpacity
-          onPress={() => navigation.goBack()}
-          activeOpacity={0.8}
-        >
+        <TouchableOpacity onPress={() => goBack()} activeOpacity={0.8}>
           <TypographyUi
             size="subtitle"
             weight="bold"

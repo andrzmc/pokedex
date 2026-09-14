@@ -2,7 +2,7 @@ import BackgroundPatternUi from '@/components/ui/background-pattern';
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
 import { CatalogItem } from '@/models/interfaces/templates';
-import { StackPokeParamList } from '@/models/types/navigation';
+import { RootStackParamList } from '@/models/types/navigation';
 import {
   ColorUtilityPatternService,
   ColorUtilityService,
@@ -17,7 +17,7 @@ const PokeListCardLayout: FC<CatalogItem> = props => {
   const POKE_CARD_COLOR = ColorUtilityService(color || '');
   const POKE_FONT_COLOR = ColorUtilityPatternService(POKE_CARD_COLOR);
 
-  const { navigate } = useNavigation<NavigationProp<StackPokeParamList>>();
+  const { navigate } = useNavigation<NavigationProp<RootStackParamList>>();
 
   return (
     <CardUi

@@ -1,4 +1,4 @@
-import RootNavigation from '@/screens/navigation';
+import RootNavigation from '@/screens/home/navigation';
 import useSkin from '@/services/hooks/useSkin';
 import { NavigationContainer } from '@react-navigation/native';
 import React, { FC } from 'react';
