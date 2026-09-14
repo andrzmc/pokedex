@@ -3,16 +3,18 @@ import { ScreenLayoutStyles } from '@/styles/components/layouts';
 import React, { FC } from 'react';
 import { ScrollView, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import HeaderScreenLayout from './header';
 
 const ScreenLayout: FC<ScreenLayoutProps> = props => {
   const {
     children,
     alignment = 'top',
     scrollable = false,
+    header,
     style,
     ...rest
   } = props;
-  
+
   const SCREEN_STYLE = [
     scrollable
       ? ScreenLayoutStyles.scrollContent
@@ -22,6 +24,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = props => {
 
   return (
     <SafeAreaView style={[ScreenLayoutStyles.container, style]} {...rest}>
+      {header ? <HeaderScreenLayout {...header} /> : null}
       {scrollable ? (
         <ScrollView
           contentContainerStyle={SCREEN_STYLE}

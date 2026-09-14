@@ -7,7 +7,7 @@ import React from 'react';
 
 const MainHomeScreen = () => {
   return (
-    <ScreenLayout>
+    <ScreenLayout header={{ title: 'Pokédex' }}>
       <PaginatorTemplate
         query={GET_POKE_LIST_QUERY}
         interceptor={PokeListMapperService}

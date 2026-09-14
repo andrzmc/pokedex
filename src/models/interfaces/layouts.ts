@@ -12,6 +12,14 @@ export interface ScreenLayoutProps extends ViewProps {
   children: ReactNode;
   alignment?: ScreenLayoutAlignment;
   scrollable?: boolean;
+  header?: ScreenLayoutHeaderProps;
+}
+
+export interface ScreenLayoutHeaderProps {
+  title?: string;
+  childrenLeft?: ReactNode;
+  childrenRight?: ReactNode;
+  isHidden?: boolean;
 }
 
 export interface DetailLayoutProps {
