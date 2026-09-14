@@ -92,22 +92,6 @@ const styles = StyleSheet.create({
   contentInfo: {
     flex: 1,
   },
-  backgroundCircle: {
-    position: 'absolute',
-    width: 250,
-    height: 250,
-    borderRadius: 125,
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-    top: 10,
-    right: -50,
-    zIndex: -1,
-  },
-  idText: {
-    opacity: 0.4,
-  },
-  nameText: {
-    color: 'white',
-  },
   tagsContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -118,9 +102,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 4,
     borderRadius: 15,
-  },
-  tagText: {
-    color: 'white',
   },
   image: {
     width: 110,

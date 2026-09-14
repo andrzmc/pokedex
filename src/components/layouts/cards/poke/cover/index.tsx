@@ -116,14 +116,6 @@ const styles = StyleSheet.create({
     minHeight: 400,
     justifyContent: 'space-between',
   },
-  backgroundCircle: {
-    position: 'absolute',
-    width: 250,
-    height: 250,
-    borderRadius: 125,
-    backgroundColor: 'rgba(255, 255, 255, 0.15)',
-    top: 50,
-  },
   header: {
     width: '100%',
     flexDirection: 'row',
