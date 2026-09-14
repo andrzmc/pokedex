@@ -1,4 +1,6 @@
-export const BlueThemeStyle = {
+import { SkinMode } from '@/models/interfaces/styles/skins';
+
+export const BlueThemeStyle: SkinMode = {
   light: {
     primary: '#2176FF',
     secondary: '#E8F4FE',
@@ -16,6 +18,10 @@ export const BlueThemeStyle = {
       inverted: '#FFFFFF',
       link: '#2176FF',
       disabled: '#94A3B8',
+      info: '#2176FF',
+      warning: '#FBC02D',
+      error: '#EF4444',
+      success: '#10B981',
     },
   },
   dark: {
@@ -35,6 +41,10 @@ export const BlueThemeStyle = {
       inverted: '#0F172A',
       link: '#60A5FA',
       disabled: '#64748B',
+      info: '#3B82F6',
+      warning: '#FBBF24',
+      error: '#F87171',
+      success: '#34D399',
     },
   },
 };

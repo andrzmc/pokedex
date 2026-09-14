@@ -1,12 +1,12 @@
 import React, { FC, useEffect, useRef } from 'react';
 import { Animated, Easing, StyleSheet, View } from 'react-native';
 import { LoaderUiProps } from '@/models/interfaces/ui';
-import { DefaultThemeStyle } from '@/styles/themes/default';
+import useSkin from '@/services/hooks/useSkin';
 
 const LoaderUi: FC<LoaderUiProps> = props => {
   const { size = 'normal', style, ...rest } = props;
 
-  const LOADER_COLOR = DefaultThemeStyle.light.primary;
+  const { skin } = useSkin();
 
   const SIZE_MAP = {
     big: 128,
@@ -44,7 +44,7 @@ const LoaderUi: FC<LoaderUiProps> = props => {
             width: dimension,
             height: dimension,
             borderRadius: dimension / 2,
-            borderColor: LOADER_COLOR,
+            borderColor: skin.primary,
             borderWidth: borderW,
             transform: [{ rotate: spin }],
           },
@@ -54,7 +54,7 @@ const LoaderUi: FC<LoaderUiProps> = props => {
           style={[
             styles.topHalf,
             {
-              backgroundColor: LOADER_COLOR,
+              backgroundColor: skin.primary,
               height: dimension / 2,
             },
           ]}
@@ -63,7 +63,7 @@ const LoaderUi: FC<LoaderUiProps> = props => {
           style={[
             styles.divider,
             {
-              backgroundColor: LOADER_COLOR,
+              backgroundColor: skin.primary,
               height: borderW,
             },
           ]}
@@ -75,7 +75,7 @@ const LoaderUi: FC<LoaderUiProps> = props => {
               width: dimension / 3,
               height: dimension / 3,
               borderRadius: dimension / 6,
-              borderColor: LOADER_COLOR,
+              borderColor: skin.primary,
               borderWidth: borderW,
             },
           ]}

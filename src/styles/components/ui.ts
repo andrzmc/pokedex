@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
 import { TextFontSizeStyles, TextWeightStyles } from '../global/text';
-import { DefaultThemeStyle } from '../themes/default';
+import { DefaultThemeStyle } from '../skins/default';
 
 export const TypographyUiStyles = StyleSheet.create({
   // Sizes

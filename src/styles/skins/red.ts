@@ -1,4 +1,6 @@
-export const RedThemeStyle = {
+import { SkinMode } from '@/models/interfaces/styles/skins';
+
+export const RedThemeStyle: SkinMode = {
   light: {
     primary: '#FF3366',
     secondary: '#F4F5F9',
@@ -16,6 +18,10 @@ export const RedThemeStyle = {
       inverted: '#FFFFFF',
       link: '#FF3366',
       disabled: '#C5CBD3',
+      info: '#4E97D9',
+      warning: '#FBC02D',
+      error: '#E3350D',
+      success: '#4CAF50',
     },
   },
   dark: {
@@ -35,6 +41,10 @@ export const RedThemeStyle = {
       inverted: '#2C2C2C',
       link: '#FF6688',
       disabled: '#757575',
+      info: '#64B5F6',
+      warning: '#FFD54F',
+      error: '#EF5350',
+      success: '#81C784',
     },
   },
 };

@@ -1,4 +1,6 @@
-export const DefaultThemeStyle = {
+import { SkinMode } from '@/models/interfaces/styles/skins';
+
+export const DefaultThemeStyle: SkinMode = {
   light: {
     primary: '#1A1A1A',
     secondary: '#F5F5F5',
@@ -16,6 +18,10 @@ export const DefaultThemeStyle = {
       inverted: '#FFFFFF',
       link: '#1A1A1A',
       disabled: '#9E9E9E',
+      info: '#2189e4',
+      warning: '#e6e625',
+      error: '#D32F2F',
+      success: '#2E7D32',
     },
   },
   dark: {
@@ -35,6 +41,10 @@ export const DefaultThemeStyle = {
       inverted: '#000000',
       link: '#FFFFFF',
       disabled: '#757575',
+      info: '#E0E0E0',
+      warning: '#BDBDBD',
+      error: '#EF5350',
+      success: '#81C784',
     },
   },
 };

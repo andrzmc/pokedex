@@ -1,6 +1,6 @@
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
-import { DefaultThemeStyle } from '@/styles/themes/default';
+import { DefaultThemeStyle } from '@/styles/skins/default';
 import React, { FC } from 'react';
 import { StyleSheet, View, Image } from 'react-native';
 import { ErrorStatusCardLayoutProps } from '@/models/interfaces/layouts';

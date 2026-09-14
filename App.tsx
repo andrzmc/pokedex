@@ -1,3 +1,4 @@
+import ThemeProvider from '@/context/providers/skin/skin.provider';
 import RootNavigation from '@/screens/navigation';
 import { PokeApiGraphQlService } from '@/services/graphql/pokeapi';
 import { ApolloProvider } from '@apollo/client/react';
@@ -13,9 +14,11 @@ function App() {
     <ApolloProvider client={PokeApiGraphQlService}>
       <SafeAreaProvider>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <NavigationContainer>
-          <RootNavigation />
-        </NavigationContainer>
+        <ThemeProvider>
+          <NavigationContainer>
+            <RootNavigation />
+          </NavigationContainer>
+        </ThemeProvider>
       </SafeAreaProvider>
     </ApolloProvider>
   );
