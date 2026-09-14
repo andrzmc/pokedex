@@ -5,6 +5,7 @@ import {
   TypographySize,
   TypographyWeight,
   CardShape,
+  LoaderSize,
 } from '../types/ui';
 
 export interface TypographyUiProps extends TextProps {
@@ -33,4 +34,8 @@ export interface BackgroundPatternUiProps {
   backgroundColor?: string;
   position?: { top?: number; right?: number };
   size?: number;
+}
+
+export interface LoaderUiProps extends ViewProps {
+  size?: LoaderSize;
 }

@@ -8,3 +8,4 @@ export type TypographyColor =
   | 'warning';
 
 export type CardShape = 'rounded' | 'flat';
+export type LoaderSize = 'big' | 'normal' | 'small';
