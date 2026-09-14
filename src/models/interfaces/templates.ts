@@ -1,3 +1,4 @@
+import { ErrorLike } from '@apollo/client';
 import { DocumentNode } from '@apollo/client';
 
 export interface CatalogItem {
@@ -21,4 +22,10 @@ export interface PaginatorTemplateProps {
   renderItem?: (item: CatalogItem) => React.ReactElement;
   numColumns?: number;
   onItemsChange?: (items: CatalogItem[]) => void;
+}
+
+export interface FooterPaginatorTemplateProps {
+  loading: boolean;
+  catalog?: CatalogResponse;
+  errorStatus?: ErrorLike;
 }

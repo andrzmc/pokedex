@@ -1,4 +1,4 @@
-import { CatalogResponse } from '@/models/interfaces/catalog';
+import { CatalogResponse } from '@/models/interfaces/templates';
 import { DetailLayoutProps } from '@/models/interfaces/layouts';
 import {
   PokeApiCatalog,

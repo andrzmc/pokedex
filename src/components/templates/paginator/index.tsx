@@ -1,14 +1,17 @@
+import ErrorStatusCardLayout from '@/components/layouts/cards/status/error';
 import { CardUi } from '@/components/ui/card';
+import LoaderUi from '@/components/ui/loader';
 import { TypographyUi } from '@/components/ui/typography';
 import {
   CatalogItem,
   CatalogResponse,
   PaginatorTemplateProps,
-} from '@/models/interfaces/catalog';
+} from '@/models/interfaces/templates';
 import { ErrorLike } from '@apollo/client';
 import { useQuery } from '@apollo/client/react';
 import React, { FC, useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, StyleSheet, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+import FooterPaginatorTemplate from './footer';
 
 const PaginatorTemplate: FC<PaginatorTemplateProps> = ({
   query,
@@ -77,24 +80,20 @@ const PaginatorTemplate: FC<PaginatorTemplateProps> = ({
 
   return (
     <>
-      {loading ? (
-        <View style={styles.loaderContainer}>
-          <ActivityIndicator />
-        </View>
-      ) : null}
+      {loading && !catalog?.items?.length && <LoaderUi size="big" />}
 
-      {errorStatus?.message ? (
-        <TypographyUi>{errorStatus.message}</TypographyUi>
-      ) : null}
+      {errorStatus?.message && !catalog?.items?.length && (
+        <ErrorStatusCardLayout message={errorStatus.message} size="title" />
+      )}
 
-      {catalog ? (
+      {catalog && catalog.items?.length > 0 ? (
         <FlatList
           contentContainerStyle={styles.contentContainer}
           columnWrapperStyle={
             numColumns && numColumns > 1 ? styles.columnWrapper : undefined
           }
           data={catalog.items}
-          keyExtractor={item => item.value as string}
+          keyExtractor={(item, index) => `${item.value}-${index}`}
           renderItem={({ item }) => (
             <View style={styles.itemContainer}>
               {renderItem ? (
@@ -110,6 +109,13 @@ const PaginatorTemplate: FC<PaginatorTemplateProps> = ({
           onEndReachedThreshold={0.4}
           onEndReached={handleLoadMore}
           showsVerticalScrollIndicator={false}
+          ListFooterComponent={
+            <FooterPaginatorTemplate
+              loading={loading}
+              catalog={catalog}
+              errorStatus={errorStatus}
+            />
+          }
         />
       ) : null}
     </>

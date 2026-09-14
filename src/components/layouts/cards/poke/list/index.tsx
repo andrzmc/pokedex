@@ -1,7 +1,7 @@
 import BackgroundPatternUi from '@/components/ui/background-pattern';
 import { CardUi } from '@/components/ui/card';
 import { TypographyUi } from '@/components/ui/typography';
-import { CatalogItem } from '@/models/interfaces/catalog';
+import { CatalogItem } from '@/models/interfaces/templates';
 import { StackPokeParamList } from '@/models/types/navigation';
 import {
   ColorUtilityPatternService,
