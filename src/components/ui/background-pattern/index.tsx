@@ -8,6 +8,8 @@ const BackgroundPatternUi: FC<BackgroundPatternUiProps> = props => {
 
   const hasTop = position?.top !== undefined;
   const hasRight = position?.right !== undefined;
+  const hasLeft = position?.left !== undefined;
+  const hasBottom = position?.bottom !== undefined;
 
   return (
     <View
@@ -18,9 +20,14 @@ const BackgroundPatternUi: FC<BackgroundPatternUiProps> = props => {
           width: size,
           height: size,
           borderRadius: size / 2,
-          top: hasTop ? position.top : '50%',
-          marginTop: hasTop ? 0 : -size / 2,
-          ...(hasRight ? { right: position.right } : { alignSelf: 'center' }),
+          ...(hasTop ? { top: position.top } : {}),
+          ...(hasBottom ? { bottom: position.bottom } : {}),
+          ...(!hasTop && !hasBottom
+            ? { top: '50%', marginTop: -size / 2 }
+            : {}),
+          ...(hasLeft ? { left: position.left } : {}),
+          ...(hasRight ? { right: position.right } : {}),
+          ...(!hasLeft && !hasRight ? { alignSelf: 'center' } : {}),
         },
       ]}
     />
