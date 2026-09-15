@@ -4,7 +4,7 @@ import { DefaultThemeStyle } from './default';
 import { GreenThemeStyle } from './green';
 import { RedThemeStyle } from './red';
 
-export const SKIN_THEMES: SkinOptions = {
+export const SKIN_OPTIONS: SkinOptions = {
   default: DefaultThemeStyle,
   blue: BlueThemeStyle,
   green: GreenThemeStyle,
