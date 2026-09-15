@@ -129,7 +129,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   contentContainer: {
-    paddingHorizontal: 20,
     gap: 10,
   },
   columnWrapper: {
