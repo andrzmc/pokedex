@@ -10,7 +10,7 @@ import {
 import useSkin from '@/services/hooks/useSkin';
 import { SKIN_APPEARANCE, SKIN_ICON_APPEARANCE } from '@/styles/skins';
 
-const ModeSkinSwitcherTemplate: FC = () => {
+const AppaeranceSkinSwitcherTemplate: FC = () => {
   const { skin, onChangeAppearance } = useSkin();
 
   return (
@@ -43,7 +43,7 @@ const ModeSkinSwitcherTemplate: FC = () => {
   );
 };
 
-export default ModeSkinSwitcherTemplate;
+export default AppaeranceSkinSwitcherTemplate;
 
 const styles = StyleSheet.create({
   container: {

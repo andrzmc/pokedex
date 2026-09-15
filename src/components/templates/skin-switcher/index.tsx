@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import SelectorSkinSwitcherTemplate from './selector';
-import ModeSkinSwitcherTemplate from './appearance';
+import AppaeranceSkinSwitcherTemplate from './appearance';
 
 const SkinSwitcherTemplate: FC = () => {
   return (
     <>
-      <ModeSkinSwitcherTemplate />
+      <AppaeranceSkinSwitcherTemplate />
       <SelectorSkinSwitcherTemplate />
     </>
   );
