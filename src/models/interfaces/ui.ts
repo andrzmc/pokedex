@@ -33,7 +33,7 @@ export interface WrapperUiProps extends ViewProps {
 
 export interface BackgroundPatternUiProps {
   backgroundColor?: string;
-  position?: { top?: number; right?: number };
+  position?: { top?: number; right?: number; left?: number; bottom?: number };
   size?: number;
 }
 

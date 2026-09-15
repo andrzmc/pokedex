@@ -30,6 +30,14 @@ export const ColorUtilityPatternService = (
 ): string => {
   if (!color) return 'rgb(200, 200, 200)';
 
+  return ColorUtilityIsLightService(color)
+    ? `rgba(0, 0, 0, ${opacity || 1.0})`
+    : `rgba(255, 255, 255, ${opacity || 1.0})`;
+};
+
+export const ColorUtilityIsLightService = (color?: string): boolean => {
+  if (!color) return true;
+
   let r = 0,
     g = 0,
     b = 0;
@@ -57,7 +65,5 @@ export const ColorUtilityPatternService = (
   }
 
   const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-  return luminance > 0.8
-    ? `rgba(0, 0, 0, ${opacity || 1.0})`
-    : `rgba(255, 255, 255, ${opacity || 1.0})`;
+  return luminance > 0.8;
 };

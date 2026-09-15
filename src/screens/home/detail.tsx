@@ -49,7 +49,7 @@ const DetailHomeScreen = () => {
   };
 
   return (
-    <ScreenLayout scrollable>
+    <ScreenLayout scrollable withSafeArea={false}>
       {loading ? (
         <LoaderUi size="big" />
       ) : (

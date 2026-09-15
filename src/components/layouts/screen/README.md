@@ -29,18 +29,24 @@ import Icon from 'react-native-vector-icons/Ionicons';
 <ScreenLayout scrollable={false} alignment="center">
   <Text>This content is perfectly centered and won't scroll.</Text>
 </ScreenLayout>
+
+// Edge-to-edge layout (ignoring the top Safe Area for full immersion)
+<ScreenLayout withSafeArea={false}>
+  <Text>This content goes all the way up to the status bar.</Text>
+</ScreenLayout>
 ```
 
 ## Props
 
-| Name           | Type                            | Required | Default | Description                                                                                              |
-| :------------- | :------------------------------ | :------: | :-----: | :------------------------------------------------------------------------------------------------------- |
-| **children**   | `ReactNode`                     |   Yes    |    -    | The content elements to be rendered inside the layout.                                                   |
-| **header**     | `ScreenLayoutHeaderProps`       |    No    |    -    | Optional configuration for a fixed header at the top. See **Header Props** below.                        |
-| **alignment**  | `'center' \| 'top' \| 'bottom'` |    No    | `'top'` | Defines the vertical alignment of the content.                                                           |
-| **scrollable** | `boolean`                       |    No    | `true`  | When `true`, wraps the content in a `ScrollView` with `flexGrow: 1`. When `false`, uses a static `View`. |
-| **style**      | `StyleProp<ViewStyle>`          |    No    |    -    | Additional custom styles to apply to the main `SafeAreaView` container.                                  |
-| **...rest**    | `ViewProps`                     |    No    |    -    | Accepts any standard React Native `<View />` properties (e.g., `onLayout`, `pointerEvents`).             |
+| Name             | Type                            | Required | Default | Description                                                                                                        |
+| :--------------- | :------------------------------ | :------: | :-----: | :----------------------------------------------------------------------------------------------------------------- |
+| **children**     | `ReactNode`                     |   Yes    |    -    | The content elements to be rendered inside the layout.                                                             |
+| **header**       | `ScreenLayoutHeaderProps`       |    No    |    -    | Optional configuration for a fixed header at the top. See **Header Props** below.                                  |
+| **alignment**    | `'center' \| 'top' \| 'bottom'` |    No    | `'top'` | Defines the vertical alignment of the content.                                                                     |
+| **scrollable**   | `boolean`                       |    No    | `true`  | When `true`, wraps the content in a `ScrollView` with `flexGrow: 1`. When `false`, uses a static `View`.           |
+| **withSafeArea** | `boolean`                       |    No    | `true`  | If `false`, disables the top Safe Area boundary, allowing the content to render edge-to-edge up to the status bar. |
+| **style**        | `StyleProp<ViewStyle>`          |    No    |    -    | Additional custom styles to apply to the main `SafeAreaView` container.                                            |
+| **...rest**      | `ViewProps`                     |    No    |    -    | Accepts any standard React Native `<View />` properties (e.g., `onLayout`, `pointerEvents`).                       |
 
 ### Header Props (`ScreenLayoutHeaderProps`)
 

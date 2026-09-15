@@ -12,6 +12,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = props => {
     scrollable = false,
     header,
     style,
+    withSafeArea = true,
     ...rest
   } = props;
 
@@ -23,7 +24,15 @@ const ScreenLayout: FC<ScreenLayoutProps> = props => {
   ];
 
   return (
-    <SafeAreaView style={[ScreenLayoutStyles.container, style]} {...rest}>
+    <SafeAreaView
+      style={[ScreenLayoutStyles.container, style]}
+      edges={
+        withSafeArea
+          ? ['top', 'right', 'bottom', 'left']
+          : ['right', 'bottom', 'left']
+      }
+      {...rest}
+    >
       {header ? <HeaderScreenLayout {...header} /> : null}
       {scrollable ? (
         <ScrollView

@@ -13,6 +13,7 @@ export interface ScreenLayoutProps extends ViewProps {
   alignment?: ScreenLayoutAlignment;
   scrollable?: boolean;
   header?: ScreenLayoutHeaderProps;
+  withSafeArea?: boolean;
 }
 
 export interface ScreenLayoutHeaderProps {
