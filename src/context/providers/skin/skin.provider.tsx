@@ -2,7 +2,7 @@ import { SkinContext } from '@/context/providers/skin/skin.context';
 import { SkinConfig, SkinMode } from '@/models/interfaces/styles/skins';
 import { SKIN_OPTIONS } from '@/styles/skins';
 import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
+import { ColorSchemeName, StatusBar, useColorScheme } from 'react-native';
 
 const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -12,6 +12,8 @@ const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [skinName, setSkinName] = useState<string>('default');
   const [skinMode, setSkinMode] = useState<SkinMode>();
   const [skin, setSkin] = useState<SkinConfig>();
+  const [skinAppearance, setSkinAppearance] =
+    useState<ColorSchemeName | null>();
 
   useEffect(() => {
     init();
@@ -20,19 +22,27 @@ const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   useEffect(() => {
     handleSkin();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [skinName, isDarkMode]);
+  }, [skinName, isDarkMode, skinAppearance]);
 
   const init = () => {
     setSkinName('default');
   };
 
   const handleSkin = () => {
+    let appearance = handleAppearance();
+
     if (!skinName) return;
 
     let data = AVAILABLE_SKINS[skinName as keyof typeof AVAILABLE_SKINS];
 
     setSkinMode(data);
-    setSkin(data[isDarkMode ? 'dark' : 'light']);
+    setSkin(data[appearance]);
+  };
+
+  const handleAppearance = () => {
+    let data = skinAppearance ? skinAppearance : isDarkMode ? 'dark' : 'light';
+
+    return data;
   };
 
   return (
@@ -41,7 +51,9 @@ const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
         skin: skin!,
         isDarkMode: isDarkMode!,
         skinName: skinName!,
+        appearance: skinAppearance!,
         setSkinName: setSkinName,
+        setAppearance: setSkinAppearance,
       }}
     >
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />

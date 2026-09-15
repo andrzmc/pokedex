@@ -1,3 +1,6 @@
+import { BoxiconName } from '@/models/types/ui';
+import { ColorSchemeName } from 'react-native';
+
 export interface SkinConfig {
   primary: string;
   secondary: string;
@@ -34,4 +37,16 @@ export interface SkinsTextConfig {
   warning: string;
   error: string;
   success: string;
+}
+
+export interface SkinsAppaerance {
+  light: ColorSchemeName | null;
+  dark: ColorSchemeName | null;
+  system: ColorSchemeName | null;
+}
+
+export interface SkinsAppaeranceIcon {
+  light: BoxiconName;
+  dark: BoxiconName;
+  system: BoxiconName;
 }
