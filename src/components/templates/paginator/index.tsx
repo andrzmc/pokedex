@@ -4,14 +4,12 @@ import LoaderUi from '@/components/ui/loader';
 import { TypographyUi } from '@/components/ui/typography';
 import {
   CatalogItem,
-  CatalogResponse,
   PaginatorTemplateProps,
 } from '@/models/interfaces/templates';
-import { ErrorLike } from '@apollo/client';
-import { useQuery } from '@apollo/client/react';
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import FooterPaginatorTemplate from './footer';
+import { usePaginator } from '../../../services/hooks/usePaginator';
 
 const PaginatorTemplate: FC<PaginatorTemplateProps> = ({
   query,
@@ -20,63 +18,11 @@ const PaginatorTemplate: FC<PaginatorTemplateProps> = ({
   numColumns,
   renderItem,
 }) => {
-  const [catalog, setCatalog] = useState<CatalogResponse>();
-  const [errorStatus, setErrorStatus] = useState<ErrorLike>();
-
-  const { loading, error, data, fetchMore, networkStatus } = useQuery(query, {
-    variables: { limit, offset: 0 },
-    notifyOnNetworkStatusChange: true,
+  const { catalog, errorStatus, loading, handleLoadMore } = usePaginator({
+    query,
+    interceptor,
+    limit,
   });
-
-  useEffect(() => {
-    init();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
-
-  const init = () => {
-    if (!data || loading) {
-      return;
-    }
-
-    if (error) {
-      setErrorStatus(error);
-      return;
-    }
-
-    handleTransformData(data);
-  };
-
-  const handleTransformData = (value: Object) => {
-    if (!interceptor) {
-      setCatalog(value as CatalogResponse);
-      return;
-    }
-
-    try {
-      setCatalog(interceptor(value));
-    } catch {
-      setErrorStatus({ message: 'error transform data', name: '' });
-    }
-  };
-
-  const handleLoadMore = () => {
-    if (networkStatus === 3 || loading || !catalog?.items) return;
-
-    fetchMore({
-      variables: { offset: catalog.items.length, limit },
-      updateQuery: (prev, { fetchMoreResult }) => {
-        if (!fetchMoreResult) return prev;
-
-        const prevData = prev as Record<string, any>;
-        const newData = fetchMoreResult as Record<string, any>;
-
-        return {
-          total: prevData.total,
-          items: [...prevData.items, ...newData.items],
-        };
-      },
-    });
-  };
 
   return (
     <>
@@ -129,7 +75,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   contentContainer: {
-    paddingHorizontal: 20,
     gap: 10,
   },
   columnWrapper: {

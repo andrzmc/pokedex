@@ -1,9 +1,11 @@
-import { SkinConfig, SkinMode } from '../../styles/skins';
+import { SkinConfig } from '../../styles/skins';
+import { ColorSchemeName } from 'react-native';
 
 export interface SkinState {
-  theme: SkinMode;
-  setTheme: (theme: SkinMode) => void;
   skin: SkinConfig;
-  setSkin: (skin: SkinConfig) => void;
   isDarkMode: boolean;
+  skinName: string;
+  appearance: ColorSchemeName | null;
+  setSkinName: (value: string) => void;
+  setAppearance: (value: ColorSchemeName | null) => void;
 }

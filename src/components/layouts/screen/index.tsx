@@ -13,6 +13,7 @@ const ScreenLayout: FC<ScreenLayoutProps> = props => {
     header,
     style,
     withSafeArea = true,
+    withPadding = true,
     ...rest
   } = props;
 
@@ -21,6 +22,10 @@ const ScreenLayout: FC<ScreenLayoutProps> = props => {
       ? ScreenLayoutStyles.scrollContent
       : ScreenLayoutStyles.container,
     ScreenLayoutStyles[`alignment_${alignment}`],
+    {
+      paddingHorizontal: withPadding ? 20 : 0,
+      paddingBottom: withPadding ? 20 : 0,
+    },
   ];
 
   return (

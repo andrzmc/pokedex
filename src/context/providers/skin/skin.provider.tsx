@@ -1,50 +1,63 @@
 import { SkinContext } from '@/context/providers/skin/skin.context';
 import { SkinConfig, SkinMode } from '@/models/interfaces/styles/skins';
-import { SKIN_THEMES } from '@/styles/skins';
+import { SKIN_OPTIONS } from '@/styles/skins';
 import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { StatusBar, useColorScheme } from 'react-native';
+import { ColorSchemeName, StatusBar, useColorScheme } from 'react-native';
 
 const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const isDarkMode = useColorScheme() === 'dark';
 
-  const AVAILABLE_SKINS = SKIN_THEMES;
+  const AVAILABLE_SKINS = SKIN_OPTIONS;
 
-  const [theme, setTheme] = useState<SkinMode>();
+  const [skinName, setSkinName] = useState<string>('default');
+  const [skinMode, setSkinMode] = useState<SkinMode>();
   const [skin, setSkin] = useState<SkinConfig>();
+  const [skinAppearance, setSkinAppearance] =
+    useState<ColorSchemeName | null>();
 
   useEffect(() => {
     init();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    handleSkinByTheme();
+    handleSkin();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [theme, isDarkMode]);
+  }, [skinName, isDarkMode, skinAppearance]);
 
   const init = () => {
-    if (theme) return;
-
-    setTheme(AVAILABLE_SKINS.default);
+    setSkinName('default');
   };
 
-  const handleSkinByTheme = () => {
-    if (!theme) return;
-    setSkin(theme[isDarkMode ? 'dark' : 'light']);
+  const handleSkin = () => {
+    let appearance = handleAppearance();
+
+    if (!skinName) return;
+
+    let data = AVAILABLE_SKINS[skinName as keyof typeof AVAILABLE_SKINS];
+
+    setSkinMode(data);
+    setSkin(data[appearance]);
+  };
+
+  const handleAppearance = () => {
+    let data = skinAppearance ? skinAppearance : isDarkMode ? 'dark' : 'light';
+
+    return data;
   };
 
   return (
     <SkinContext.Provider
       value={{
-        theme: theme!,
-        setTheme,
         skin: skin!,
-        setSkin,
         isDarkMode: isDarkMode!,
+        skinName: skinName!,
+        appearance: skinAppearance!,
+        setSkinName: setSkinName,
+        setAppearance: setSkinAppearance,
       }}
     >
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      {theme && skin ? children : null}
+      {skinMode && skin ? children : null}
     </SkinContext.Provider>
   );
 };

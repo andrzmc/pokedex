@@ -66,11 +66,7 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
           </TypographyUi>
         </View>
 
-        <TouchableOpacity
-          style={styles.imageContainer}
-          onPress={() => setIsShiny(!isShiny)}
-          activeOpacity={0.8}
-        >
+        <View style={styles.imageContainer}>
           {displayImage ? (
             <Image
               source={{ uri: displayImage }}
@@ -78,7 +74,29 @@ const PokeCoverCardLayout: FC<DetailLayoutProps> = props => {
               resizeMode="contain"
             />
           ) : null}
-        </TouchableOpacity>
+          {images?.shiny && (
+            <TouchableOpacity
+              onPress={() => setIsShiny(!isShiny)}
+              activeOpacity={0.8}
+              style={[
+                styles.toggle,
+                {
+                  backgroundColor: ColorUtilityPatternService(
+                    POKE_CARD_COLOR,
+                    0.15,
+                  ),
+                },
+              ]}
+            >
+              <IconUi
+                variant={isShiny ? 'basic' : 'filled'}
+                name="bx-palette"
+                size={24}
+                color={POKE_FONT_COLOR}
+              />
+            </TouchableOpacity>
+          )}
+        </View>
 
         <View style={styles.footer}>
           <TypographyUi
@@ -143,6 +161,13 @@ const styles = StyleSheet.create({
     height: 220,
     width: '100%',
     zIndex: 2,
+    position: 'relative',
+  },
+  toggle: {
+    position: 'absolute',
+    right: 0,
+    padding: 10,
+    borderRadius: 50,
   },
   image: {
     width: 220,
