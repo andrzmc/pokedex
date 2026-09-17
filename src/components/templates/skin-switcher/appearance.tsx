@@ -10,7 +10,7 @@ import useSkin from '@/services/hooks/useSkin';
 import { SKIN_APPEARANCE, SKIN_ICON_APPEARANCE } from '@/styles/skins';
 
 const AppaeranceSkinSwitcherTemplate: FC = () => {
-  const { skin, appearance, onChangeAppearance } = useSkin();
+  const { skin, appearance, onChangeSkinAppearance } = useSkin();
 
   const handleStylesActive = (value: ColorSchemeName | null) => {
     const isActive = appearance === value;
@@ -25,7 +25,9 @@ const AppaeranceSkinSwitcherTemplate: FC = () => {
         <TouchableOpacity
           key={key}
           style={[styles.option, handleStylesActive(value)]}
-          onPress={() => onChangeAppearance(value as ColorSchemeName | null)}
+          onPress={() =>
+            onChangeSkinAppearance(value as ColorSchemeName | null)
+          }
         >
           <IconUi
             name={

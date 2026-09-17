@@ -1,47 +1,43 @@
 import { SkinContext } from '@/context/providers/skin/skin.context';
+import { RootState } from '@/context/store';
 import { SkinConfig, SkinMode } from '@/models/interfaces/styles/skins';
 import { SKIN_OPTIONS } from '@/styles/skins';
 import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { ColorSchemeName, StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, useColorScheme } from 'react-native';
+import { useSelector } from 'react-redux';
 
 const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const AVAILABLE_SKINS = SKIN_OPTIONS;
 
-  const [skinName, setSkinName] = useState<string>('default');
+  const settingsStore = useSelector((state: RootState) => state.settings);
+
   const [skinMode, setSkinMode] = useState<SkinMode>();
   const [skin, setSkin] = useState<SkinConfig>();
-  const [skinAppearance, setSkinAppearance] =
-    useState<ColorSchemeName | null>();
   const [isDarkAppearance, setIsDarkAppearance] = useState<boolean>();
-
-  useEffect(() => {
-    init();
-  }, []);
 
   useEffect(() => {
     handleSkin();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [skinName, isDarkMode, skinAppearance]);
-
-  const init = () => {
-    setSkinName('default');
-  };
+  }, [settingsStore?.skinName, settingsStore.appareance, isDarkMode]);
 
   const handleSkin = () => {
     let appearance = handleAppearance();
 
-    if (!skinName) return;
-
-    let data = AVAILABLE_SKINS[skinName as keyof typeof AVAILABLE_SKINS];
+    let data =
+      AVAILABLE_SKINS[settingsStore?.skinName as keyof typeof AVAILABLE_SKINS];
 
     setSkinMode(data);
     setSkin(data[appearance]);
   };
 
   const handleAppearance = () => {
-    let data = skinAppearance ? skinAppearance : isDarkMode ? 'dark' : 'light';
+    let data = settingsStore?.appareance
+      ? settingsStore.appareance
+      : isDarkMode
+      ? 'dark'
+      : 'light';
     setIsDarkAppearance(data === 'dark');
     return data;
   };
@@ -51,10 +47,8 @@ const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
       value={{
         skin: skin!,
         isDarkMode: isDarkAppearance!,
-        skinName: skinName!,
-        appearance: skinAppearance!,
-        setSkinName: setSkinName,
-        setAppearance: setSkinAppearance,
+        skinName: settingsStore?.skinName!,
+        appearance: settingsStore?.appareance!,
       }}
     >
       <StatusBar
