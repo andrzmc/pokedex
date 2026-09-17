@@ -13,15 +13,13 @@ const useSkin = () => {
 
   const dispatch = useDispatch();
 
-  const onChangeSkin = (event: string) => {
-    const data = Object.entries(SKIN_OPTIONS)
-      .map(([key, _]) => key)
-      .includes(event);
-    dispatch(onChangeSkinName(event && data ? event : 'default'));
+  const onChangeSkin = (value: string) => {
+    const data = value in SKIN_OPTIONS;
+    dispatch(onChangeSkinName(data ? value : 'default'));
   };
 
-  const onChangeSkinAppearance = (event: ColorSchemeName | null) => {
-    dispatch(onChangeAppearance(event));
+  const onChangeSkinAppearance = (value: ColorSchemeName | null) => {
+    dispatch(onChangeAppearance(value));
   };
 
   return {
