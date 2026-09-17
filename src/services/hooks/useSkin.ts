@@ -4,7 +4,7 @@ import { useContext } from 'react';
 import { ColorSchemeName } from 'react-native';
 
 const useSkin = () => {
-  const { skin, skinName, isDarkMode, setSkinName, setAppearance } =
+  const { skin, skinName, appearance, isDarkMode, setSkinName, setAppearance } =
     useContext(SkinContext);
 
   const onChangeSkin = (event: string) => {
@@ -21,6 +21,7 @@ const useSkin = () => {
   return {
     skin,
     skinName,
+    appearance,
     isDarkMode,
     onChangeSkin,
     onChangeAppearance,
