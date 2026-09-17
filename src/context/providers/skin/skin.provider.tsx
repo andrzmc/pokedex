@@ -1,62 +1,38 @@
 import { SkinContext } from '@/context/providers/skin/skin.context';
-import { SkinConfig, SkinMode } from '@/models/interfaces/styles/skins';
+import { RootState } from '@/context/store';
 import { SKIN_OPTIONS } from '@/styles/skins';
-import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { ColorSchemeName, StatusBar, useColorScheme } from 'react-native';
+import React, { FC, ReactNode } from 'react';
+import { StatusBar, useColorScheme } from 'react-native';
+import { useSelector } from 'react-redux';
 
 const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const isDarkMode = useColorScheme() === 'dark';
+  const settingsStore = useSelector((state: RootState) => state.settings);
 
-  const AVAILABLE_SKINS = SKIN_OPTIONS;
+  const appearance =
+    settingsStore.appareance || (isDarkMode ? 'dark' : 'light');
 
-  const [skinName, setSkinName] = useState<string>('default');
-  const [skinMode, setSkinMode] = useState<SkinMode>();
-  const [skin, setSkin] = useState<SkinConfig>();
-  const [skinAppearance, setSkinAppearance] =
-    useState<ColorSchemeName | null>();
+  const isDarkAppearance = appearance === 'dark';
 
-  useEffect(() => {
-    init();
-  }, []);
+  const skinName = settingsStore.skinName;
 
-  useEffect(() => {
-    handleSkin();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [skinName, isDarkMode, skinAppearance]);
+  const skinMode =
+    SKIN_OPTIONS[skinName as keyof typeof SKIN_OPTIONS] || SKIN_OPTIONS.default;
 
-  const init = () => {
-    setSkinName('default');
-  };
-
-  const handleSkin = () => {
-    let appearance = handleAppearance();
-
-    if (!skinName) return;
-
-    let data = AVAILABLE_SKINS[skinName as keyof typeof AVAILABLE_SKINS];
-
-    setSkinMode(data);
-    setSkin(data[appearance]);
-  };
-
-  const handleAppearance = () => {
-    let data = skinAppearance ? skinAppearance : isDarkMode ? 'dark' : 'light';
-
-    return data;
-  };
+  const skin = skinMode[appearance];
 
   return (
     <SkinContext.Provider
       value={{
-        skin: skin!,
-        isDarkMode: isDarkMode!,
-        skinName: skinName!,
-        appearance: skinAppearance!,
-        setSkinName: setSkinName,
-        setAppearance: setSkinAppearance,
+        skin,
+        isDarkMode: isDarkAppearance,
+        skinName,
+        appearance,
       }}
     >
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar
+        barStyle={isDarkAppearance ? 'light-content' : 'dark-content'}
+      />
       {skinMode && skin ? children : null}
     </SkinContext.Provider>
   );
