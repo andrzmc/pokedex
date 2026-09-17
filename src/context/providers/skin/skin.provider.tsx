@@ -10,7 +10,7 @@ const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const settingsStore = useSelector((state: RootState) => state.settings);
 
   const appearance =
-    settingsStore.appareance ?? (isDarkMode ? 'dark' : 'light');
+    settingsStore.appareance || (isDarkMode ? 'dark' : 'light');
 
   const isDarkAppearance = appearance === 'dark';
 

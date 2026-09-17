@@ -8,12 +8,16 @@ import {
 } from 'react-native';
 import useSkin from '@/services/hooks/useSkin';
 import { SKIN_APPEARANCE, SKIN_ICON_APPEARANCE } from '@/styles/skins';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/context/store';
 
 const AppaeranceSkinSwitcherTemplate: FC = () => {
-  const { skin, appearance, onChangeSkinAppearance } = useSkin();
+  const { skin, onChangeSkinAppearance } = useSkin();
+
+  const settingsStore = useSelector((state: RootState) => state.settings);
 
   const handleStylesActive = (value: ColorSchemeName | null) => {
-    const isActive = appearance === value;
+    const isActive = settingsStore.appareance === value;
     return {
       borderColor: isActive ? skin.primary : skin.text.paragraph,
     };
@@ -34,8 +38,12 @@ const AppaeranceSkinSwitcherTemplate: FC = () => {
               SKIN_ICON_APPEARANCE[key as keyof typeof SKIN_ICON_APPEARANCE]
             }
             size={32}
-            color={appearance === value ? skin.primary : skin.text.paragraph}
-            variant={appearance === value ? 'filled' : 'basic'}
+            color={
+              settingsStore.appareance === value
+                ? skin.primary
+                : skin.text.paragraph
+            }
+            variant={settingsStore.appareance === value ? 'filled' : 'basic'}
           />
         </TouchableOpacity>
       ))}
