@@ -14,6 +14,7 @@ const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [skin, setSkin] = useState<SkinConfig>();
   const [skinAppearance, setSkinAppearance] =
     useState<ColorSchemeName | null>();
+  const [isDarkAppearance, setIsDarkAppearance] = useState<boolean>();
 
   useEffect(() => {
     init();
@@ -41,7 +42,7 @@ const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
 
   const handleAppearance = () => {
     let data = skinAppearance ? skinAppearance : isDarkMode ? 'dark' : 'light';
-
+    setIsDarkAppearance(data === 'dark');
     return data;
   };
 
@@ -49,14 +50,16 @@ const SkinProvider: FC<{ children: ReactNode }> = ({ children }) => {
     <SkinContext.Provider
       value={{
         skin: skin!,
-        isDarkMode: isDarkMode!,
+        isDarkMode: isDarkAppearance!,
         skinName: skinName!,
         appearance: skinAppearance!,
         setSkinName: setSkinName,
         setAppearance: setSkinAppearance,
       }}
     >
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+      <StatusBar
+        barStyle={isDarkAppearance ? 'light-content' : 'dark-content'}
+      />
       {skinMode && skin ? children : null}
     </SkinContext.Provider>
   );
