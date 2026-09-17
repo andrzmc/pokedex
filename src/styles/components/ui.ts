@@ -1,6 +1,5 @@
 import { StyleSheet } from 'react-native';
 import { TextFontSizeStyles, TextWeightStyles } from '../global/text';
-import { DefaultThemeStyle } from '../skins/default';
 
 export const TypographyUiStyles = StyleSheet.create({
   ...TextFontSizeStyles,
@@ -9,8 +8,6 @@ export const TypographyUiStyles = StyleSheet.create({
 
 export const CardUiStyles = StyleSheet.create({
   container: {
-    padding: 20,
-    backgroundColor: DefaultThemeStyle.light.secondary,
     overflow: 'hidden',
   },
   shape_rounded: {
