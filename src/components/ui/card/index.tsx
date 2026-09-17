@@ -13,7 +13,7 @@ export const CardUi: FC<CardUiProps> = props => {
     title,
     subtitle,
     shape = 'rounded',
-    padding = { top: 20, right: 20, left: 20, bottom: 20 },
+    padding,
     disabled = false,
     onPress,
     style,
@@ -25,10 +25,10 @@ export const CardUi: FC<CardUiProps> = props => {
     CardUiStyles[`shape_${shape}`],
     disabled && CardUiStyles.disabled,
     {
-      paddingTop: padding.top,
-      paddingRight: padding.right,
-      paddingBottom: padding.bottom,
-      paddingLeft: padding.left,
+      paddingTop: typeof padding?.top === 'number' ? padding.top : 20,
+      paddingRight: typeof padding?.right === 'number' ? padding.right : 20,
+      paddingBottom: typeof padding?.bottom === 'number' ? padding.bottom : 20,
+      paddingLeft: typeof padding?.left === 'number' ? padding.left : 20,
     },
     style,
   ];
