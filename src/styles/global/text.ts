@@ -24,19 +24,15 @@ export const TextFontSizeStyles = StyleSheet.create({
 
 export const TextWeightStyles = StyleSheet.create({
   weight_normal: {
-    fontFamily: 'Roboto',
-    fontWeight: '400',
+    fontFamily: 'Lato-Light',
   },
   weight_medium: {
-    fontFamily: 'Roboto',
-    fontWeight: '500',
+    fontFamily: 'Lato-Regular',
   },
   weight_bold: {
-    fontFamily: 'Roboto',
-    fontWeight: '700',
+    fontFamily: 'Lato-Bold',
   },
   weight_extrabold: {
-    fontFamily: 'Roboto',
-    fontWeight: '900',
+    fontFamily: 'Lato-Black',
   },
 });
