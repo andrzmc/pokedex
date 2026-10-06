@@ -15,35 +15,27 @@ const SelectorSkinSwitcherTemplate: FC = () => {
   };
 
   return (
-    <View>
-      <TypographyUi size="title" weight="bold" color="title">
-        Tema Principal
-      </TypographyUi>
-      <TypographyUi size="subtitle" color="subtitle">
-        Personaliza el color base de los elementos
-      </TypographyUi>
-      <View style={styles.options}>
-        {Object.entries(SKIN_OPTIONS).map(([key, item]) => (
-          <TouchableOpacity
-            key={key}
-            style={styles.option}
-            onPress={() => onChangeSkin(key)}
-          >
-            <View
-              style={[
-                styles.circle,
-                {
-                  backgroundColor: item.light.primary,
-                },
-                handleSelectorStyle(key),
-              ]}
-            />
-            <TypographyUi size="small" style={styles.text}>
-              {key}
-            </TypographyUi>
-          </TouchableOpacity>
-        ))}
-      </View>
+    <View style={styles.options}>
+      {Object.entries(SKIN_OPTIONS).map(([key, item]) => (
+        <TouchableOpacity
+          key={key}
+          style={styles.option}
+          onPress={() => onChangeSkin(key)}
+        >
+          <View
+            style={[
+              styles.circle,
+              {
+                backgroundColor: item.light.primary,
+              },
+              handleSelectorStyle(key),
+            ]}
+          />
+          <TypographyUi size="small" style={styles.text}>
+            {key}
+          </TypographyUi>
+        </TouchableOpacity>
+      ))}
     </View>
   );
 };
@@ -53,7 +45,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     gap: 16,
-    marginVertical: 8,
   },
   option: {
     alignItems: 'center',

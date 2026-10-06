@@ -3,13 +3,17 @@ import { View } from 'react-native';
 import { CardUiProps } from '@/models/interfaces/ui';
 import { CardUiStyles } from '@/styles/components/ui';
 import WrapperCardUi from './wrapper';
+import { TypographyUi } from '../typography';
 
 export const CardUi: FC<CardUiProps> = props => {
   const {
     children,
     header,
     footer,
+    title,
+    subtitle,
     shape = 'rounded',
+    padding,
     disabled = false,
     onPress,
     style,
@@ -20,6 +24,12 @@ export const CardUi: FC<CardUiProps> = props => {
     CardUiStyles.container,
     CardUiStyles[`shape_${shape}`],
     disabled && CardUiStyles.disabled,
+    {
+      paddingTop: typeof padding?.top === 'number' ? padding.top : 20,
+      paddingRight: typeof padding?.right === 'number' ? padding.right : 20,
+      paddingBottom: typeof padding?.bottom === 'number' ? padding.bottom : 20,
+      paddingLeft: typeof padding?.left === 'number' ? padding.left : 20,
+    },
     style,
   ];
 
@@ -31,6 +41,16 @@ export const CardUi: FC<CardUiProps> = props => {
       {...rest}
     >
       {header && <View style={CardUiStyles.header}>{header}</View>}
+      {title && (
+        <TypographyUi size="title" color="title">
+          {title}
+        </TypographyUi>
+      )}
+      {subtitle && (
+        <TypographyUi size="subtitle" color="subtitle">
+          {subtitle}
+        </TypographyUi>
+      )}
       {children}
       {footer && <View style={CardUiStyles.footer}>{footer}</View>}
     </WrapperCardUi>

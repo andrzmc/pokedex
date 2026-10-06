@@ -20,6 +20,9 @@ export interface CardUiProps extends ViewProps {
   children: ReactNode;
   header?: ReactNode;
   footer?: ReactNode;
+  title?: string;
+  subtitle?: string;
+  padding?: { top?: number; right?: number; left?: number; bottom?: number };
   shape?: CardShape;
   disabled?: boolean;
   onPress?: TouchableOpacityProps['onPress'];

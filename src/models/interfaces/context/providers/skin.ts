@@ -6,6 +6,4 @@ export interface SkinState {
   isDarkMode: boolean;
   skinName: string;
   appearance: ColorSchemeName | null;
-  setSkinName: (value: string) => void;
-  setAppearance: (value: ColorSchemeName | null) => void;
 }
