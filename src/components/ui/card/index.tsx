@@ -42,12 +42,12 @@ export const CardUi: FC<CardUiProps> = props => {
     >
       {header && <View style={CardUiStyles.header}>{header}</View>}
       {title && (
-        <TypographyUi size="title" color="title">
+        <TypographyUi size="title" color="title" weight="bold">
           {title}
         </TypographyUi>
       )}
       {subtitle && (
-        <TypographyUi size="subtitle" color="subtitle">
+        <TypographyUi size="subtitle" color="subtitle" weight="medium">
           {subtitle}
         </TypographyUi>
       )}
